@@ -1,6 +1,7 @@
-var dataproject = {
+var preaknessContenders = {
 	init: function(){
-		//dataproject.share();
+		//preaknessContenders.share();
+		preaknessContenders.scroll();
 	},
 	share: function(){
 		$(".icon-twitter").on("click", function(){
@@ -17,9 +18,19 @@ var dataproject = {
 	    	var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link="+url+"&picture="+picture+"&name="+title+"&description="+description+"&redirect_uri=http://www.facebook.com";    		
 			window.open(facebook_url, 'mywin','left=200,top=200,width=500,height=300,toolbar=1,resizable=0'); return false;
 		});
+	},
+	scroll: function() {
+		var myScroll = new IScroll('#contenders', {
+			scrollX: true,
+			scrollY: true,
+			momentum: false,
+			snap: true
+		});
+
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 	}
 }
 $(document).ready(function(){
-	dataproject.init();
+	preaknessContenders.init();
 	console.log("connected");
 });
