@@ -266,6 +266,9 @@
             this.options.useTransition = false;
         }
         this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
+        if (this.options.probeType == 3) {
+            this.options.useTransition = false;
+        }
         this.x = 0;
         this.y = 0;
         this.directionX = 0;
@@ -418,6 +421,12 @@
                 this.startTime = timestamp;
                 this.startX = this.x;
                 this.startY = this.y;
+                if (this.options.probeType == 1) {
+                    this._execEvent("scroll");
+                }
+            }
+            if (this.options.probeType > 1) {
+                this._execEvent("scroll");
             }
         },
         _end: function(e) {
@@ -866,6 +875,9 @@
                 newY = this.maxScrollY;
             }
             this.scrollTo(newX, newY, 0);
+            if (this.options.probeType > 1) {
+                this._execEvent("scroll");
+            }
         },
         _initSnap: function() {
             this.currentPage = {};
@@ -1171,6 +1183,9 @@
                 if (that.isAnimating) {
                     rAF(step);
                 }
+                if (that.options.probeType == 3) {
+                    that._execEvent("scroll");
+                }
             }
             this.isAnimating = true;
             step();
@@ -1399,6 +1414,12 @@
             newX = this.x + deltaX;
             newY = this.y + deltaY;
             this._pos(newX, newY);
+            if (this.scroller.options.probeType == 1 && timestamp - this.startTime > 300) {
+                this.startTime = timestamp;
+                this.scroller._execEvent("scroll");
+            } else if (this.scroller.options.probeType > 1) {
+                this.scroller._execEvent("scroll");
+            }
             e.preventDefault();
             e.stopPropagation();
         },
@@ -1609,7 +1630,7 @@
 
 var preaknessContenders = {
     init: function() {
-        preaknessContenders.scroll();
+        preaknessContenders.scrollFuntions();
     },
     share: function() {
         $(".icon-twitter").on("click", function() {
@@ -1629,16 +1650,33 @@ var preaknessContenders = {
             return false;
         });
     },
-    scroll: function() {
+    scrollFuntions: function() {
         var myScroll = new IScroll("#contenders", {
             scrollX: true,
             scrollY: true,
             momentum: false,
-            snap: true
+            snap: true,
+            mouseWheel: true,
+            probeType: 3
         });
-        document.addEventListener("touchmove", function(e) {
+        document.addEventListener("touchend", function(e) {
             e.preventDefault();
         }, false);
+        myScroll.on("scroll", function() {
+            var pos = myScroll.getComputedPosition();
+            var yPos = Math.abs(pos.y);
+            var div_top = $(window).height() - 30;
+            console.log("w" + yPos);
+            console.log("d" + div_top);
+            if (yPos > div_top) {
+                $("#sticky").addClass("stick");
+                $("#sticky-anchor").height($("#sticky").outerHeight());
+            } else {
+                $("#sticky").removeClass("stick");
+                $("#sticky-anchor").height(0);
+            }
+        });
+        function sticky_relocate(yPos) {}
     }
 };
 

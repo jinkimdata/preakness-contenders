@@ -50,16 +50,28 @@ html(class="no-js", lang="en")
 					img(src="images/baltimore-sun-logo-white.png" border="0")
 			.tophat-share-tools
 				span.icon-facebook
-				span.icon-twitter
+				span.icon-twitter		
+		#yPos
+		.overlay.namePlate#sticky
+			span.fa.fa-angle-left
+			//- .slidePosition
+			//- 	span.fa.fa-circle
+			//- 	span.fa.fa-circle
+			//- 	span.fa.fa-circle
+			//- 	span.fa.fa-circle
+			//- 	span.fa.fa-circle
+			//- 	span.fa.fa-circle
+			//- 	span.fa.fa-circle
+			//- 	span.fa.fa-circle
+			span.fa.fa-angle-right
 		#contenders
 			#scroller
 				ul
 					- for (var i=0;i<72;i++) {
 						- if (i<8) {
 							li(class="cell cell__name cell__name--#{i}" style="background-image: url('#{datalink}images/#{i}.png');")
-								.namePlate
-									span.fa.fa-angle-left
-									case i
+								.namePlateText.namePlateText--center
+									case i%8
 										when 0
 											h2 American Pharaoh
 										when 1
@@ -67,7 +79,7 @@ html(class="no-js", lang="en")
 										when 2
 											h2 Mr. Z
 										when 3
-											h2 Daniz Moon
+											h2 Danzig Moon
 										when 4
 											h2 Tale of Verve
 										when 5
@@ -76,26 +88,37 @@ html(class="no-js", lang="en")
 											h2 Diving Rod
 										when 7
 											h2 Firing Line
-									span.fa.fa-angle-right
 								.detailsPlate
 									p Details
 									span.fa.fa-angle-down
 						- } else if (i < 16) {
-							li(class="cell cell__jockey cell__jockey--#{i-8}") jockey #{i}
+							li(class="cell cell__jockey cell__jockey--#{i%8}")
+								include includes/nameplate.jade
+								p jockey #{i%8}
 						- } else if (i < 24) {
-							li(class="cell cell__odds cell__odds--#{i-16}") odds #{i}
+							li(class="cell cell__odds cell__odds--#{i%8}")
+								include includes/nameplate.jade
+								p odds #{i%8}
 						- } else if (i < 32) {
-							li(class="cell cell__notes cell__notes--#{i-24}") notes #{i}
+							li(class="cell cell__notes cell__notes--#{i%8}")
+								include includes/nameplate.jade
+								p notes #{i%8}
 						- } else if (i < 40) {
-							li(class="cell cell__owner cell__owner--#{i-32}") owner #{i}
+							li(class="cell cell__owner cell__owner--#{i%8}")
+								include includes/nameplate.jade
+								p owner #{i%8}
 						- } else if (i < 48) {
-							li(class="cell cell__trainer cell__trainer--#{i-40}") trainer #{i}
+							li(class="cell cell__trainer cell__trainer--#{i%8}")
+								include includes/nameplate.jade
+								p trainer #{i%8}
 						- } else if (i < 56) {
-							li(class="cell cell__breeder cell__breeder--#{i-48}") breeder #{i}
+							li(class="cell cell__breeder cell__breeder--#{i%8}")
+								include includes/nameplate.jade
+								p breeder #{i%8}
 						- } else if (i < 64) {
-							li(class="cell cell__earnings cell__earnings--#{i-56}") earnings #{i}
-						- } else if (i < 72) {
-							li(class="cell cell__prevstart cell__prevstart--#{i-64}") prevstart #{i}
+							li(class="cell cell__earnings cell__earnings--#{i%8}")
+								include includes/nameplate.jade
+								p earnings #{i%8}
 						- }
 					- }
 

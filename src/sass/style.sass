@@ -9,27 +9,52 @@
 
 body
 	font-size: 14px
-p,a
+p,a,span
 	font-family: $lato
 	color: $preakgold
 h1,h2,h3,h4,h5,h6
 	font-family: $montserrat
 	color: white
+#yPos
+	position: fixed
+	top: 0
+.overlay
+	position: absolute
+	width: 12.5%
+	z-index: 1
+	+transition(all .2s linear)
+	&.namePlate
+		width: 100%
+		height: 3.5em
+		top: 45%
+		// background-color: rgba(26,26,26,.8)
+		.slidePosition
+			.fa-circle
+				font-size: .5em
+		span
+			font-size: 3em
+			&.fa-angle-left
+				float: left
+				margin-left: .1em
+			&.fa-angle-right
+				float: right
+				margin-right: .1em
+	&.stick
+		top: 25px
 #contenders
 	position: absolute
-	z-index: 1
 	top: 25px
 	bottom: 0
 	left: 0
 	width: 100%
 	background: #ccc
 	overflow: hidden
+	z-index: -1
 	#scroller 
 		position: absolute
-		z-index: 1
-		-webkit-tap-highlight-color: rgba(0,0,0,0)
 		width: 800%
-		height: 900%
+		height: 800%
+		-webkit-tap-highlight-color: rgba(0,0,0,0)
 		background-color: $offblack
 		-webkit-transform: translateZ(0)
 		-moz-transform: translateZ(0)
@@ -57,15 +82,24 @@ h1,h2,h3,h4,h5,h6
 				display: block
 				float: left
 				width: 12.5%
-				height: 11.1%
-				border-right: .1em solid $offblack
-				border-bottom: .1em solid $offblack
+				height: 12.5%
 				background-color: $offblack
 				font-size: 1em
+				.namePlateText--top
+					width: 100%
+					height: 3.5em
+					background-color: $offblack
+					border-bottom: .1em solid $preakgold 
+					h2
+						display: inline-block
+						margin: .2em 0 0 0
+						font-size: 1.3em
+						font-weight: 300
+						text-transform: uppercase
 				&__name
 					position: relative
 					background-size: cover
-					.namePlate
+					.namePlateText--center
 						position: absolute
 						top: 42%
 						width: 100%
@@ -77,27 +111,19 @@ h1,h2,h3,h4,h5,h6
 							font-size: 1.3em
 							font-weight: 300
 							text-transform: uppercase
-						span
-							color: $preakgold
-							font-size: 3em
-							&.fa-angle-left
-								float: left
-								margin-left: .1em
-							&.fa-angle-right
-								float: right
-								margin-right: .1em
 					.detailsPlate
 						position: absolute
 						bottom: 0
 						width: 100%
-						height: 3.5em
+						height: 3em
 						background-color: rgba(26,26,26,.8)
+						text-align: center
 						p
 							margin: .2em 0 0 0
 						span
 							color: $preakgold
 							font-size: 3em
-
+							line-height: .5em
 				&__jockey
 				&__odds
 				&__notes
