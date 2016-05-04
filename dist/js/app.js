@@ -1665,16 +1665,20 @@ var preaknessContenders = {
         myScroll.on("scroll", function() {
             var pos = myScroll.getComputedPosition();
             var yPos = Math.abs(pos.y);
-            var div_top = $(window).height() - 30;
-            console.log("w" + yPos);
-            console.log("d" + div_top);
-            if (yPos > div_top) {
+            var screenHeight = $(window).height() - 50;
+            if (yPos > screenHeight) {
                 $("#sticky").addClass("stick");
                 $("#sticky-anchor").height($("#sticky").outerHeight());
             } else {
                 $("#sticky").removeClass("stick");
                 $("#sticky-anchor").height(0);
             }
+            var xPos = Math.abs(pos.x);
+            var screenWidth = $(window).width();
+            var slidePos = Math.round(xPos / screenWidth);
+            console.log(slidePos);
+            $(".posMarker").removeClass("posMarker");
+            $(".fa-circle--" + slidePos).addClass("posMarker");
         });
         function sticky_relocate(yPos) {}
     }

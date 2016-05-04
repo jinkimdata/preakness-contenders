@@ -28,9 +28,6 @@ h1,h2,h3,h4,h5,h6
 		height: 3.5em
 		top: 45%
 		// background-color: rgba(26,26,26,.8)
-		.slidePosition
-			.fa-circle
-				font-size: .5em
 		span
 			font-size: 3em
 			&.fa-angle-left
@@ -39,6 +36,19 @@ h1,h2,h3,h4,h5,h6
 			&.fa-angle-right
 				float: right
 				margin-right: .1em
+		.slidePosition
+			position: absolute
+			top: 2em
+			left: 0
+			width: 100%
+			text-align: center
+			.fa-circle
+				font-size: .7em
+				color: $darkgray
+				margin: 0 .3em
+				+transition(all .5s ease)
+				&.posMarker
+					color: $preakgold
 	&.stick
 		top: 25px
 #contenders
@@ -79,26 +89,17 @@ h1,h2,h3,h4,h5,h6
 			height: 100%
 			text-align: center
 			.cell
+				position: relative
 				display: block
-				float: left
 				width: 12.5%
 				height: 12.5%
+				float: left
 				background-color: $offblack
 				font-size: 1em
-				.namePlateText--top
-					width: 100%
-					height: 3.5em
-					background-color: $offblack
-					border-bottom: .1em solid $preakgold 
-					h2
-						display: inline-block
-						margin: .2em 0 0 0
-						font-size: 1.3em
-						font-weight: 300
-						text-transform: uppercase
 				&__name
 					position: relative
 					background-size: cover
+					border-top: .2em solid $preakgold
 					.namePlateText--center
 						position: absolute
 						top: 42%
@@ -124,6 +125,31 @@ h1,h2,h3,h4,h5,h6
 							color: $preakgold
 							font-size: 3em
 							line-height: .5em
+				.namePlateText--top
+					width: 100%
+					height: 3.5em
+					background-color: $offblack
+					border-bottom: .1em solid $preakgold 
+					h2
+						display: inline-block
+						margin: .2em 0 0 0
+						font-size: 1.3em
+						font-weight: 300
+						text-transform: uppercase
+				.arrow	
+					&--up
+					&--down
+						position: absolute
+						bottom: 0
+						left: 0
+						width: 100%
+					p
+						margin: .7em 0
+						color: $lightgray
+					span	
+						font-size: 3em
+						&.fa-angle-down
+							line-height: 0			
 				&__jockey
 				&__odds
 				&__notes
@@ -138,7 +164,6 @@ h1,h2,h3,h4,h5,h6
 	height: 25px
 	background-color: $darkgray
 	overflow: hidden
-	border-bottom: .2em solid $preakgold
 #logo
 	width: 250px
 	height: 100%

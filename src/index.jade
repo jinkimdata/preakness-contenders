@@ -1,6 +1,8 @@
 //- include 
 - var datalink = "http://data.baltimoresun.com/PROJECTLINK/"
 - var datalink = ""
+//- Creates variable called content -- an array of objects with each contender information
+include includes/content.jade
 
 doctype html
 //if lt IE 7
@@ -50,74 +52,83 @@ html(class="no-js", lang="en")
 					img(src="images/baltimore-sun-logo-white.png" border="0")
 			.tophat-share-tools
 				span.icon-facebook
-				span.icon-twitter		
+				span.icon-twitter
 		#yPos
 		.overlay.namePlate#sticky
 			span.fa.fa-angle-left
-			//- .slidePosition
-			//- 	span.fa.fa-circle
-			//- 	span.fa.fa-circle
-			//- 	span.fa.fa-circle
-			//- 	span.fa.fa-circle
-			//- 	span.fa.fa-circle
-			//- 	span.fa.fa-circle
-			//- 	span.fa.fa-circle
-			//- 	span.fa.fa-circle
+			.slidePosition
+				span.fa.fa-circle.fa-circle--0.posMarker
+				span.fa.fa-circle.fa-circle--1
+				span.fa.fa-circle.fa-circle--2
+				span.fa.fa-circle.fa-circle--3
+				span.fa.fa-circle.fa-circle--4
+				span.fa.fa-circle.fa-circle--5
+				span.fa.fa-circle.fa-circle--6
+				span.fa.fa-circle.fa-circle--7
 			span.fa.fa-angle-right
+
+
 		#contenders
 			#scroller
+				//- Created 72 li elements. 
 				ul
 					- for (var i=0;i<72;i++) {
+						//- For every 8 elements, we create something different.
+						//- This is the first slide for each horse, featuring a near-fullscreen image
 						- if (i<8) {
 							li(class="cell cell__name cell__name--#{i}" style="background-image: url('#{datalink}images/#{i}.png');")
 								.namePlateText.namePlateText--center
-									case i%8
-										when 0
-											h2 American Pharaoh
-										when 1
-											h2 Dortmund
-										when 2
-											h2 Mr. Z
-										when 3
-											h2 Danzig Moon
-										when 4
-											h2 Tale of Verve
-										when 5
-											h2 Bodhisattva
-										when 6
-											h2 Diving Rod
-										when 7
-											h2 Firing Line
+									//- The nameplate.jade file simply assigns h2 name tags for each horse. It is used for every slide.
+									include includes/nameplate.jade
 								.detailsPlate
 									p Details
 									span.fa.fa-angle-down
 						- } else if (i < 16) {
 							li(class="cell cell__jockey cell__jockey--#{i%8}")
-								include includes/nameplate.jade
-								p jockey #{i%8}
+								.namePlateText.namePlateText--top
+									include includes/nameplate.jade
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+								.contentBlock
+									h3 Jockey
+									- if (content[i%8].jockeyImgBool) {
+										img(src="#{datalink}images/jockey#{i%8}")
+										p.small #{content[i%8].jockey}
+									- } else {
+										p.large #{content[i%8].jockey}
+									- }
+								.arrow.arrow--down
+									p.nextSlidePreview Odds
+									span.fa.fa-angle-down
 						- } else if (i < 24) {
 							li(class="cell cell__odds cell__odds--#{i%8}")
-								include includes/nameplate.jade
+								.namePlateText.namePlateText--top
+									include includes/nameplate.jade
 								p odds #{i%8}
 						- } else if (i < 32) {
 							li(class="cell cell__notes cell__notes--#{i%8}")
-								include includes/nameplate.jade
+								.namePlateText.namePlateText--top
+									include includes/nameplate.jade
 								p notes #{i%8}
 						- } else if (i < 40) {
 							li(class="cell cell__owner cell__owner--#{i%8}")
-								include includes/nameplate.jade
+								.namePlateText.namePlateText--top
+									include includes/nameplate.jade
 								p owner #{i%8}
 						- } else if (i < 48) {
 							li(class="cell cell__trainer cell__trainer--#{i%8}")
-								include includes/nameplate.jade
+								.namePlateText.namePlateText--top
+									include includes/nameplate.jade
 								p trainer #{i%8}
 						- } else if (i < 56) {
 							li(class="cell cell__breeder cell__breeder--#{i%8}")
-								include includes/nameplate.jade
+								.namePlateText.namePlateText--top
+									include includes/nameplate.jade
 								p breeder #{i%8}
 						- } else if (i < 64) {
 							li(class="cell cell__earnings cell__earnings--#{i%8}")
-								include includes/nameplate.jade
+								.namePlateText.namePlateText--top
+									include includes/nameplate.jade
 								p earnings #{i%8}
 						- }
 					- }
