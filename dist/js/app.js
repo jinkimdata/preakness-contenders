@@ -1663,6 +1663,17 @@ var preaknessContenders = {
             e.preventDefault();
         }, false);
         myScroll.on("scroll", function() {
+            sticky_relocate();
+        });
+        $(".backToTop").on("click touchend", function() {
+            var pos = myScroll.getComputedPosition();
+            var xPos = Math.abs(pos.x);
+            var screenWidth = $(window).width();
+            var slidePos = Math.round(xPos / screenWidth);
+            console.log(slidePos);
+            myScroll.goToPage(slidePos, 0);
+        });
+        function sticky_relocate() {
             var pos = myScroll.getComputedPosition();
             var yPos = Math.abs(pos.y);
             var screenHeight = $(window).height() - 50;
@@ -1676,11 +1687,9 @@ var preaknessContenders = {
             var xPos = Math.abs(pos.x);
             var screenWidth = $(window).width();
             var slidePos = Math.round(xPos / screenWidth);
-            console.log(slidePos);
             $(".posMarker").removeClass("posMarker");
             $(".fa-circle--" + slidePos).addClass("posMarker");
-        });
-        function sticky_relocate(yPos) {}
+        }
     }
 };
 

@@ -599,18 +599,75 @@ h1, h2, h3, h4, h5, h6 {
             font-size: 1.3em;
             font-weight: 300;
             text-transform: uppercase; }
+        #contenders #scroller ul .cell .arrow p {
+          margin: -.7em 0 .7em 0;
+          color: #acacac;
+          text-transform: uppercase; }
         #contenders #scroller ul .cell .arrow--down {
           position: absolute;
           bottom: 0;
           left: 0;
           width: 100%; }
-        #contenders #scroller ul .cell .arrow p {
-          margin: .7em 0;
-          color: #acacac; }
         #contenders #scroller ul .cell .arrow span {
           font-size: 3em; }
           #contenders #scroller ul .cell .arrow span.fa-angle-down {
             line-height: 0; }
+        #contenders #scroller ul .cell .contentBlock {
+          position: absolute;
+          top: 27%;
+          width: 100%; }
+          #contenders #scroller ul .cell .contentBlock h3 {
+            margin-bottom: .3em;
+            font-size: 1.7em;
+            font-weight: 300;
+            text-transform: uppercase; }
+          #contenders #scroller ul .cell .contentBlock img {
+            max-width: 10em;
+            max-height: 10em; }
+          #contenders #scroller ul .cell .contentBlock p {
+            margin-top: .3em;
+            font-family: "Montserrat", sans-serif;
+            font-size: 1.7em;
+            font-weight: 300; }
+          #contenders #scroller ul .cell .contentBlock .textBlock {
+            position: relative;
+            width: 100%; }
+            #contenders #scroller ul .cell .contentBlock .textBlock p {
+              width: 100%;
+              margin: 0;
+              padding: .5em;
+              font-family: "Montserrat", sans-serif;
+              font-size: 2.5em;
+              font-weight: 300;
+              background-color: #444444; }
+              #contenders #scroller ul .cell .contentBlock .textBlock p span {
+                text-transform: uppercase; }
+        #contenders #scroller ul .cell .backToTop {
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+          left: 0;
+          cursor: pointer; }
+          #contenders #scroller ul .cell .backToTop p {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 1em;
+            padding: .2em;
+            font-family: "Montserrat", sans-serif;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            background-color: #f9c039;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            transition: all 0.5s ease; }
+            #contenders #scroller ul .cell .backToTop p:hover {
+              color: white;
+              background-color: #ad7b05; }
+        #contenders #scroller ul .cell__notes .contentBlock .textBlock p {
+          padding: .5em;
+          font-family: "Lato", sans-serif;
+          font-size: 1.2em;
+          background-color: transparent; }
 
 /* Tophat */
 #tophat {
