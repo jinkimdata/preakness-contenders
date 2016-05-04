@@ -1,7 +1,7 @@
 var preaknessContenders = {
 	init: function(){
 		//preaknessContenders.share();
-		preaknessContenders.scrollFuntions();
+		preaknessContenders.scrollFunctions();
 
 		
 	},
@@ -21,7 +21,7 @@ var preaknessContenders = {
 			window.open(facebook_url, 'mywin','left=200,top=200,width=500,height=300,toolbar=1,resizable=0'); return false;
 		});
 	},
-	scrollFuntions: function() {
+	scrollFunctions: function() {
 		// iScroll
 		var myScroll = new IScroll('#contenders', {
 			scrollX: true,
@@ -29,15 +29,21 @@ var preaknessContenders = {
 			momentum: false,
 			snap: true,
 			mouseWheel: true,
-			probeType: 3
+			probeType: 3,
+			bounce: false
 		});
-		document.addEventListener('touchend', function (e) { 
-			e.preventDefault(); 
-			// var yPos = myScroll.getScrollY();
-			// sticky_relocate(yPos);
-		}, false);
+		// document.addEventListener('touchend', function (e) { 
+		// 	e.preventDefault(); 
+		// }, false);
+		var timer;
+
 		myScroll.on('scroll',function(){
-			sticky_relocate();
+			if (timer) {
+				clearTimeout(timer);
+			};
+			timer = setTimeout(function() {
+				sticky_relocate();
+			},150);
 		});
 
 		$('.backToTop').on('click touchend',function(){
@@ -51,21 +57,22 @@ var preaknessContenders = {
 		});
 
 		function sticky_relocate() {
+			console.log('test');
 			var pos = myScroll.getComputedPosition();
 			var yPos = Math.abs(pos.y);
 			var screenHeight = $(window).height() - 50;
 			if (yPos > screenHeight) {
 				$('#sticky').addClass('stick');
 				$('#sticky-anchor').height($('#sticky').outerHeight());
-			} else {
+			} else {				
 				$('#sticky').removeClass('stick');
 				$('#sticky-anchor').height(0);
 			};
-			var xPos = Math.abs(pos.x);
-			var screenWidth = $(window).width();
-			var slidePos = Math.round(xPos/screenWidth);
-			$('.posMarker').removeClass('posMarker');
-			$('.fa-circle--'+slidePos).addClass('posMarker');
+			// var xPos = Math.abs(pos.x);
+			// var screenWidth = $(window).width();
+			// var slidePos = Math.round(xPos/screenWidth);
+			// $('.posMarker').removeClass('posMarker');
+			// $('.fa-circle--'+slidePos).addClass('posMarker');
 		};
 
 	}

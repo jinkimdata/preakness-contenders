@@ -21,11 +21,6 @@ html(class="no-js", lang="en")
 
 		//Mobile Specific Metas
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-		//CSS
-		link(rel="stylesheet", type="text/css", href="#{datalink}css/style.css")
-		//Fonts
-		link(rel="stylesheet", type="text/css", href="#{datalink}css/font-awesome.min.css")
-		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
 
 		//Facebook Stuff
 		meta(property="og:title", content="")
@@ -43,7 +38,7 @@ html(class="no-js", lang="en")
 		meta(name="twitter:image", content="")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
-	//- body(onload="preaknessContenders.scroll()")
+	//- body(onload="preaknessContenders.scrollFunctions()")
 	body
 		#tophat
 			.group
@@ -56,15 +51,6 @@ html(class="no-js", lang="en")
 		#yPos
 		.overlay.namePlate#sticky
 			span.fa.fa-angle-left
-			.slidePosition
-				span.fa.fa-circle.fa-circle--0.posMarker
-				span.fa.fa-circle.fa-circle--1
-				span.fa.fa-circle.fa-circle--2
-				span.fa.fa-circle.fa-circle--3
-				span.fa.fa-circle.fa-circle--4
-				span.fa.fa-circle.fa-circle--5
-				span.fa.fa-circle.fa-circle--6
-				span.fa.fa-circle.fa-circle--7
 			span.fa.fa-angle-right
 
 
@@ -76,10 +62,11 @@ html(class="no-js", lang="en")
 						//- For every 8 elements, we create something different.
 						//- This is the first slide for each horse, featuring a near-fullscreen image
 						- if (i<8) {
-							li(class="cell cell__name cell__name--#{i}" style="background-image: url('#{datalink}images/#{i}.png');")
+							li(class="cell cell__name cell__name--#{i}" style="background-image: url('#{datalink}images/#{i}.jpg');")
 								.namePlateText.namePlateText--center
 									//- The nameplate.jade file simply assigns h2 name tags for each horse. It is used for every slide.
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.detailsPlate
 									p Details
 									span.fa.fa-angle-down
@@ -87,6 +74,7 @@ html(class="no-js", lang="en")
 							li(class="cell cell__jockey cell__jockey--#{i%8}")
 								.namePlateText.namePlateText--top
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 								.contentBlock
@@ -105,6 +93,7 @@ html(class="no-js", lang="en")
 							li(class="cell cell__odds cell__odds--#{i%8}")
 								.namePlateText.namePlateText--top
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Jockey
@@ -121,6 +110,7 @@ html(class="no-js", lang="en")
 							li(class="cell cell__notes cell__notes--#{i%8}")
 								.namePlateText.namePlateText--top
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Odds
@@ -136,6 +126,7 @@ html(class="no-js", lang="en")
 							li(class="cell cell__owner cell__owner--#{i%8}")
 								.namePlateText.namePlateText--top
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Notes
@@ -155,6 +146,7 @@ html(class="no-js", lang="en")
 							li(class="cell cell__trainer cell__trainer--#{i%8}")
 								.namePlateText.namePlateText--top
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Owner
@@ -174,6 +166,7 @@ html(class="no-js", lang="en")
 							li(class="cell cell__breeder cell__breeder--#{i%8}")
 								.namePlateText.namePlateText--top
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Trainer
@@ -193,6 +186,7 @@ html(class="no-js", lang="en")
 							li(class="cell cell__earnings cell__earnings--#{i%8}")
 								.namePlateText.namePlateText--top
 									include includes/nameplate.jade
+								include includes/slidepos.jade
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Breeder
@@ -208,11 +202,16 @@ html(class="no-js", lang="en")
 		//- #leaderboard			
 		//- 	include includes/ad-for-body.html
 		
+		//CSS
+		link(rel="stylesheet", type="text/css", href="#{datalink}css/style.css")
+		//Fonts
+		link(rel="stylesheet", type="text/css", href="#{datalink}css/font-awesome.min.css")
+		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
 		//Javascript
+		//- script(src="#{datalink}js/min/modernizr.js")
+		//- script(src="#{datalink}js/app.js")
 		script(src="#{datalink}js/min/jquery-1.10.2.min.js")
-		script(src="#{datalink}js/min/modernizr.js")
-		script(src="#{datalink}js/app.js")
-		//- script(src="#{datalink}js/min/app.min.js")
+		script(src="#{datalink}js/min/app.min.js")
 
 		//- include includes/omniture.html
 		//- include includes/ad-for-header.html

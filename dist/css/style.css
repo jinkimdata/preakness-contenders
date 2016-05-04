@@ -496,21 +496,6 @@ h1, h2, h3, h4, h5, h6 {
       .overlay.namePlate span.fa-angle-right {
         float: right;
         margin-right: .1em; }
-    .overlay.namePlate .slidePosition {
-      position: absolute;
-      top: 2em;
-      left: 0;
-      width: 100%;
-      text-align: center; }
-      .overlay.namePlate .slidePosition .fa-circle {
-        font-size: .7em;
-        color: #444444;
-        margin: 0 .3em;
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        transition: all 0.5s ease; }
-        .overlay.namePlate .slidePosition .fa-circle.posMarker {
-          color: #f9c039; }
   .overlay.stick {
     top: 25px; }
 
@@ -559,35 +544,6 @@ h1, h2, h3, h4, h5, h6 {
         float: left;
         background-color: #1a1a1a;
         font-size: 1em; }
-        #contenders #scroller ul .cell__name {
-          position: relative;
-          background-size: cover;
-          border-top: 0.2em solid #f9c039; }
-          #contenders #scroller ul .cell__name .namePlateText--center {
-            position: absolute;
-            top: 42%;
-            width: 100%;
-            height: 3.5em;
-            background-color: rgba(26, 26, 26, 0.8); }
-            #contenders #scroller ul .cell__name .namePlateText--center h2 {
-              display: inline-block;
-              margin: .2em 0 0 0;
-              font-size: 1.3em;
-              font-weight: 300;
-              text-transform: uppercase; }
-          #contenders #scroller ul .cell__name .detailsPlate {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 3em;
-            background-color: rgba(26, 26, 26, 0.8);
-            text-align: center; }
-            #contenders #scroller ul .cell__name .detailsPlate p {
-              margin: .2em 0 0 0; }
-            #contenders #scroller ul .cell__name .detailsPlate span {
-              color: #f9c039;
-              font-size: 3em;
-              line-height: .5em; }
         #contenders #scroller ul .cell .namePlateText--top {
           width: 100%;
           height: 3.5em;
@@ -599,6 +555,21 @@ h1, h2, h3, h4, h5, h6 {
             font-size: 1.3em;
             font-weight: 300;
             text-transform: uppercase; }
+        #contenders #scroller ul .cell .slidePosition {
+          position: absolute;
+          top: 2em;
+          left: 0;
+          width: 100%;
+          text-align: center; }
+          #contenders #scroller ul .cell .slidePosition .fa-circle {
+            font-size: .7em;
+            color: #444444;
+            margin: 0 .3em;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            transition: all 0.5s ease; }
+            #contenders #scroller ul .cell .slidePosition .fa-circle.posMarker {
+              color: #f9c039; }
         #contenders #scroller ul .cell .arrow p {
           margin: -.7em 0 .7em 0;
           color: #acacac;
@@ -663,6 +634,37 @@ h1, h2, h3, h4, h5, h6 {
             #contenders #scroller ul .cell .backToTop p:hover {
               color: white;
               background-color: #ad7b05; }
+        #contenders #scroller ul .cell__name {
+          position: relative;
+          background-size: cover;
+          border-top: 0.2em solid #f9c039; }
+          #contenders #scroller ul .cell__name .namePlateText--center {
+            position: absolute;
+            top: 42%;
+            width: 100%;
+            height: 3.5em;
+            background-color: rgba(26, 26, 26, 0.8); }
+            #contenders #scroller ul .cell__name .namePlateText--center h2 {
+              display: inline-block;
+              margin: .2em 0 0 0;
+              font-size: 1.3em;
+              font-weight: 300;
+              text-transform: uppercase; }
+          #contenders #scroller ul .cell__name .detailsPlate {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 3em;
+            background-color: rgba(26, 26, 26, 0.8);
+            text-align: center; }
+            #contenders #scroller ul .cell__name .detailsPlate p {
+              margin: .2em 0 0 0; }
+            #contenders #scroller ul .cell__name .detailsPlate span {
+              color: #f9c039;
+              font-size: 3em;
+              line-height: .5em; }
+          #contenders #scroller ul .cell__name .slidePosition {
+            top: 48%; }
         #contenders #scroller ul .cell__notes .contentBlock .textBlock p {
           padding: .5em;
           font-family: "Lato", sans-serif;

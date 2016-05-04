@@ -1630,7 +1630,7 @@
 
 var preaknessContenders = {
     init: function() {
-        preaknessContenders.scrollFuntions();
+        preaknessContenders.scrollFunctions();
     },
     share: function() {
         $(".icon-twitter").on("click", function() {
@@ -1650,20 +1650,24 @@ var preaknessContenders = {
             return false;
         });
     },
-    scrollFuntions: function() {
+    scrollFunctions: function() {
         var myScroll = new IScroll("#contenders", {
             scrollX: true,
             scrollY: true,
             momentum: false,
             snap: true,
             mouseWheel: true,
-            probeType: 3
+            probeType: 3,
+            bounce: false
         });
-        document.addEventListener("touchend", function(e) {
-            e.preventDefault();
-        }, false);
+        var timer;
         myScroll.on("scroll", function() {
-            sticky_relocate();
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                sticky_relocate();
+            }, 150);
         });
         $(".backToTop").on("click touchend", function() {
             var pos = myScroll.getComputedPosition();
@@ -1674,6 +1678,7 @@ var preaknessContenders = {
             myScroll.goToPage(slidePos, 0);
         });
         function sticky_relocate() {
+            console.log("test");
             var pos = myScroll.getComputedPosition();
             var yPos = Math.abs(pos.y);
             var screenHeight = $(window).height() - 50;
@@ -1684,11 +1689,6 @@ var preaknessContenders = {
                 $("#sticky").removeClass("stick");
                 $("#sticky-anchor").height(0);
             }
-            var xPos = Math.abs(pos.x);
-            var screenWidth = $(window).width();
-            var slidePos = Math.round(xPos / screenWidth);
-            $(".posMarker").removeClass("posMarker");
-            $(".fa-circle--" + slidePos).addClass("posMarker");
         }
     }
 };
