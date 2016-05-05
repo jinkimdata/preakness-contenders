@@ -1097,7 +1097,7 @@
             }
             this.keyAcceleration = now - prevTime < 200 ? Math.min(this.keyAcceleration + acceleration, 50) : 0;
             switch (e.keyCode) {
-              case this.options.keyBindings.pageUp:
+              case this.options.keyBindings.pageDown:
                 if (this.hasHorizontalScroll && !this.hasVerticalScroll) {
                     newX += snap ? 1 : this.wrapperWidth;
                 } else {
@@ -1105,7 +1105,7 @@
                 }
                 break;
 
-              case this.options.keyBindings.pageDown:
+              case this.options.keyBindings.pageUp:
                 if (this.hasHorizontalScroll && !this.hasVerticalScroll) {
                     newX -= snap ? 1 : this.wrapperWidth;
                 } else {
@@ -1127,7 +1127,7 @@
                 newX += snap ? -1 : 5 + this.keyAcceleration >> 0;
                 break;
 
-              case this.options.keyBindings.up:
+              case this.options.keyBindings.down:
                 newY += snap ? 1 : 5 + this.keyAcceleration >> 0;
                 break;
 
@@ -1135,7 +1135,7 @@
                 newX -= snap ? -1 : 5 + this.keyAcceleration >> 0;
                 break;
 
-              case this.options.keyBindings.down:
+              case this.options.keyBindings.up:
                 newY -= snap ? 1 : 5 + this.keyAcceleration >> 0;
                 break;
 
@@ -1658,8 +1658,12 @@ var preaknessContenders = {
             snap: true,
             mouseWheel: true,
             probeType: 3,
-            bounce: false
+            bounce: false,
+            keyBindings: true
         });
+        document.addEventListener("touchend", function(e) {
+            e.preventDefault();
+        }, false);
         var timer;
         myScroll.on("scroll", function() {
             if (timer) {
@@ -1667,33 +1671,50 @@ var preaknessContenders = {
             }
             timer = setTimeout(function() {
                 sticky_relocate();
-            }, 50);
-        });
-        $(".backToTop").on("click touchend", function() {
-            var pos = myScroll.getComputedPosition();
-            var xPos = Math.abs(pos.x);
-            var screenWidth = $(window).width();
-            var slidePos = Math.round(xPos / screenWidth);
-            console.log(slidePos);
-            myScroll.goToPage(slidePos, 0);
+            }, 100);
         });
         function sticky_relocate() {
-            console.log("test");
-            var pos = myScroll.getComputedPosition();
-            var yPos = Math.abs(pos.y);
-            var screenHeight = $(window).height() - 50;
-            if (yPos > screenHeight) {
+            var slidePos = getSlidePos();
+            if (slidePos[1] > 0) {
                 $("#sticky").addClass("stick");
                 $("#sticky-anchor").height($("#sticky").outerHeight());
             } else {
                 $("#sticky").removeClass("stick");
                 $("#sticky-anchor").height(0);
             }
-            var xPos = Math.abs(pos.x);
+            if (slidePos[0] == 0) {
+                $(".fa-angle-left").addClass("fade");
+            } else if (slidePos[0] == 7) {
+                $(".fa-angle-right").addClass("fade");
+            } else {
+                $(".fade").removeClass("fade");
+            }
+        }
+        $(".backToTop").on("click touchend", function() {
+            var slidePos = getSlidePos();
+            myScroll.goToPage(slidePos[0], 0);
+        });
+        $(".fa-angle-up").on("click touchend", function() {
+            var slidePos = getSlidePos();
+            myScroll.goToPage(slidePos[0], slidePos[1] - 1);
+        });
+        $(".fa-angle-down").on("click touchend", function() {
+            var slidePos = getSlidePos();
+            myScroll.goToPage(slidePos[0], slidePos[1] + 1);
+        });
+        $(".fa-angle-left").on("click touchend", function() {
+            var slidePos = getSlidePos();
+            myScroll.goToPage(slidePos[0] - 1, slidePos[1]);
+        });
+        $(".fa-angle-right").on("click touchend", function() {
+            var slidePos = getSlidePos();
+            myScroll.goToPage(slidePos[0] + 1, slidePos[1]);
+        });
+        function getSlidePos() {
+            var pos = myScroll.getComputedPosition();
             var screenWidth = $(window).width();
-            var slidePos = Math.round(xPos / screenWidth);
-            $(".posMarker").removeClass("posMarker");
-            $(".fa-circle--" + slidePos).addClass("posMarker");
+            var screenHeight = $(window).height();
+            return [ Math.round(Math.abs(pos.x) / screenWidth), Math.round(Math.abs(pos.y) / screenHeight) ];
         }
     }
 };

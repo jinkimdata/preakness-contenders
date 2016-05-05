@@ -1,9 +1,7 @@
 var preaknessContenders = {
 	init: function(){
 		//preaknessContenders.share();
-		preaknessContenders.scrollFunctions();
-
-		
+		preaknessContenders.scrollFunctions();		
 	},
 	share: function(){
 		$(".icon-twitter").on("click", function(){
@@ -22,7 +20,6 @@ var preaknessContenders = {
 		});
 	},
 	scrollFunctions: function() {
-		// iScroll
 		var myScroll = new IScroll('#contenders', {
 			scrollX: true,
 			scrollY: true,
@@ -30,49 +27,64 @@ var preaknessContenders = {
 			snap: true,
 			mouseWheel: true,
 			probeType: 3,
-			bounce: false
+			bounce: false,
+			keyBindings: true
 		});
-		// document.addEventListener('touchend', function (e) { 
-		// 	e.preventDefault(); 
-		// }, false);
+		document.addEventListener('touchend', function (e) { 
+			e.preventDefault(); 
+		}, false);
 		var timer;
-
 		myScroll.on('scroll',function(){
 			if (timer) {
 				clearTimeout(timer);
 			};
 			timer = setTimeout(function() {
 				sticky_relocate();
-			},50);
+			},100);
 		});
-
-		$('.backToTop').on('click touchend',function(){
-			var pos = myScroll.getComputedPosition();
-			var xPos = Math.abs(pos.x);
-			var screenWidth = $(window).width();
-			var slidePos = Math.round(xPos/screenWidth);
-			console.log(slidePos);
-			myScroll.goToPage(slidePos, 0);
-
-		});
-
 		function sticky_relocate() {
-			console.log('test');
-			var pos = myScroll.getComputedPosition();
-			var yPos = Math.abs(pos.y);
-			var screenHeight = $(window).height() - 50;
-			if (yPos > screenHeight) {
+			var slidePos = getSlidePos();
+			if (slidePos[1] > 0) {
 				$('#sticky').addClass('stick');
 				$('#sticky-anchor').height($('#sticky').outerHeight());
 			} else {				
 				$('#sticky').removeClass('stick');
 				$('#sticky-anchor').height(0);
 			};
-			var xPos = Math.abs(pos.x);
+			if (slidePos[0] == 0) {
+				$('.fa-angle-left').addClass('fade');
+			} else if (slidePos[0] == 7) {
+				$('.fa-angle-right').addClass('fade');
+			} else {
+				$('.fade').removeClass('fade');
+			};
+		};
+
+		$('.backToTop').on('click touchend', function(){
+			var slidePos = getSlidePos();
+			myScroll.goToPage(slidePos[0], 0);
+		});
+		$('.fa-angle-up').on('click touchend', function(){
+			var slidePos = getSlidePos();
+			myScroll.goToPage(slidePos[0], slidePos[1]-1);
+		});
+		$('.fa-angle-down').on('click touchend', function(){
+			var slidePos = getSlidePos();
+			myScroll.goToPage(slidePos[0], slidePos[1]+1);
+		});
+		$('.fa-angle-left').on('click touchend', function(){
+			var slidePos = getSlidePos();
+			myScroll.goToPage(slidePos[0]-1, slidePos[1]);
+		});
+		$('.fa-angle-right').on('click touchend', function(){
+			var slidePos = getSlidePos();
+			myScroll.goToPage(slidePos[0]+1, slidePos[1]);			
+		});
+		function getSlidePos() {
+			var pos = myScroll.getComputedPosition();
 			var screenWidth = $(window).width();
-			var slidePos = Math.round(xPos/screenWidth);
-			$('.posMarker').removeClass('posMarker');
-			$('.fa-circle--'+slidePos).addClass('posMarker');
+			var screenHeight = $(window).height();
+			return [Math.round(Math.abs(pos.x)/screenWidth), Math.round(Math.abs(pos.y)/screenHeight)];
 		};
 
 	}

@@ -49,7 +49,7 @@ html(class="no-js", lang="en")
 				span.icon-facebook
 				span.icon-twitter
 		.overlay.namePlate#sticky
-			span.fa.fa-angle-left
+			span.fa.fa-angle-left.fade
 			span.fa.fa-angle-right
 		#contenders
 			#scroller
@@ -60,20 +60,20 @@ html(class="no-js", lang="en")
 						//- This is the first slide for each horse, featuring a near-fullscreen image
 						- if (i<8) {
 							li(class="cell cell__name" style="background-image: url('#{datalink}images/#{i}.jpg');")
+								.rank 
+								.rankText Rank #{i+1}
 								.namePlateText.namePlateText--center
 									//- The nameplate.jade file simply assigns h2 name tags for each horse. It is used for every slide.
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.detailsPlate
+								.detailsPlate.arrow--down
 									p Details
 									span.fa.fa-angle-down
 						- } else if (i < 16) {
 							li(class="cell cell__jockey")
 								.namePlateText.namePlateText--top
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.arrow.arrow--up
-									span.fa.fa-angle-up
 								.centerAlign
 									.contentBlock
 										h3 Jockey
@@ -84,17 +84,16 @@ html(class="no-js", lang="en")
 											.textBlock
 												p #{content[i%8].jockey}
 										- }
+								.arrow.arrow--up
+									span.fa.fa-angle-up
 								.arrow.arrow--down
 									p.nextSlidePreview Odds
 									span.fa.fa-angle-down
 						- } else if (i < 24) {
 							li(class="cell cell__odds")
 								.namePlateText.namePlateText--top
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Jockey
 								.centerAlign
 									.contentBlock
 										h3 Odds
@@ -102,34 +101,34 @@ html(class="no-js", lang="en")
 											p #{content[i%8].odds}
 												br
 												span (#{content[i%8].oddsReturns})
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Jockey
 								.arrow.arrow--down
 									p.nextSlidePreview Notes
 									span.fa.fa-angle-down
 						- } else if (i < 32) {
 							li(class="cell cell__notes")
 								.namePlateText.namePlateText--top
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Odds
 								.centerAlign
 									.contentBlock
 										h3 Notes
 										.textBlock
 											p #{content[i%8].notes1}
 											p #{content[i%8].notes2}
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Odds
 								.arrow.arrow--down
 									p.nextSlidePreview Owner
 									span.fa.fa-angle-down
 						- } else if (i < 40) {
 							li(class="cell cell__owner")
 								.namePlateText.namePlateText--top
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Notes
 								.centerAlign
 									.contentBlock
 										h3 Owner
@@ -140,17 +139,17 @@ html(class="no-js", lang="en")
 											.textBlock
 												p #{content[i%8].owner}
 										- }
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Notes
 								.arrow.arrow--down
 									p.nextSlidePreview Trainer
 									span.fa.fa-angle-down
 						- } else if (i < 48) {
 							li(class="cell cell__trainer")
 								.namePlateText.namePlateText--top
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Owner
 								.centerAlign
 									.contentBlock
 										h3 Trainer
@@ -161,17 +160,17 @@ html(class="no-js", lang="en")
 											.textBlock
 												p #{content[i%8].trainer}
 										- }
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Owner
 								.arrow.arrow--down
 									p.nextSlidePreview Breeder
 									span.fa.fa-angle-down
 						- } else if (i < 56) {
 							li(class="cell cell__breeder")
 								.namePlateText.namePlateText--top
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Trainer
 								.centerAlign
 									.contentBlock
 										h3 Breeder
@@ -182,22 +181,25 @@ html(class="no-js", lang="en")
 											.textBlock
 												p #{content[i%8].breeder}
 										- }
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Trainer
 								.arrow.arrow--down
 									p.nextSlidePreview Earnings
 									span.fa.fa-angle-down
 						- } else if (i < 64) {
 							li(class="cell cell__earnings")
 								.namePlateText.namePlateText--top
-									include includes/nameplate.jade
+									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Breeder
 								.centerAlign
 									.contentBlock
 										h3 Earnings
 										.textBlock
 											p #{content[i%8].earnings}
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Breeder
 								.backToTop 
 									p Back to top
 						- }

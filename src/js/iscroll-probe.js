@@ -1519,14 +1519,14 @@ IScroll.prototype = {
 		this.keyAcceleration = now - prevTime < 200 ? Math.min(this.keyAcceleration + acceleration, 50) : 0;
 
 		switch ( e.keyCode ) {
-			case this.options.keyBindings.pageUp:
+			case this.options.keyBindings.pageDown:
 				if ( this.hasHorizontalScroll && !this.hasVerticalScroll ) {
 					newX += snap ? 1 : this.wrapperWidth;
 				} else {
 					newY += snap ? 1 : this.wrapperHeight;
 				}
 				break;
-			case this.options.keyBindings.pageDown:
+			case this.options.keyBindings.pageUp:
 				if ( this.hasHorizontalScroll && !this.hasVerticalScroll ) {
 					newX -= snap ? 1 : this.wrapperWidth;
 				} else {
@@ -1544,13 +1544,13 @@ IScroll.prototype = {
 			case this.options.keyBindings.left:
 				newX += snap ? -1 : 5 + this.keyAcceleration>>0;
 				break;
-			case this.options.keyBindings.up:
+			case this.options.keyBindings.down:
 				newY += snap ? 1 : 5 + this.keyAcceleration>>0;
 				break;
 			case this.options.keyBindings.right:
 				newX -= snap ? -1 : 5 + this.keyAcceleration>>0;
 				break;
-			case this.options.keyBindings.down:
+			case this.options.keyBindings.up:
 				newY -= snap ? 1 : 5 + this.keyAcceleration>>0;
 				break;
 			default:
