@@ -1667,7 +1667,7 @@ var preaknessContenders = {
             }
             timer = setTimeout(function() {
                 sticky_relocate();
-            }, 150);
+            }, 50);
         });
         $(".backToTop").on("click touchend", function() {
             var pos = myScroll.getComputedPosition();
@@ -1689,6 +1689,11 @@ var preaknessContenders = {
                 $("#sticky").removeClass("stick");
                 $("#sticky-anchor").height(0);
             }
+            var xPos = Math.abs(pos.x);
+            var screenWidth = $(window).width();
+            var slidePos = Math.round(xPos / screenWidth);
+            $(".posMarker").removeClass("posMarker");
+            $(".fa-circle--" + slidePos).addClass("posMarker");
         }
     }
 };

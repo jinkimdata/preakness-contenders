@@ -1,9 +1,3 @@
-html {
-  box-sizing: border-box; }
-
-*, *::after, *::before {
-  box-sizing: inherit; }
-
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -464,6 +458,12 @@ th {
 /* General Styles */
 body {
   font-size: 14px; }
+  @media (min-width: 600px) {
+    body {
+      font-size: 18px; } }
+  @media (min-width: 800px) {
+    body {
+      font-size: 20px; } }
 
 p, a, span {
   font-family: "Lato", sans-serif;
@@ -473,242 +473,256 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
   color: white; }
 
-#yPos {
-  position: fixed;
-  top: 0; }
-
-.overlay {
+.namePlate {
   position: absolute;
-  width: 12.5%;
+  top: 45%;
+  left: 0;
+  width: 100%;
+  height: 0;
   z-index: 1;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear; }
-  .overlay.namePlate {
-    width: 100%;
-    height: 3.5em;
-    top: 45%; }
-    .overlay.namePlate span {
-      font-size: 3em; }
-      .overlay.namePlate span.fa-angle-left {
-        float: left;
-        margin-left: .1em; }
-      .overlay.namePlate span.fa-angle-right {
-        float: right;
-        margin-right: .1em; }
-  .overlay.stick {
-    top: 25px; }
+  .namePlate span {
+    font-size: 3em; }
+  .namePlate.stick {
+    top: 2em; }
+
+.fa-angle-left {
+  float: left;
+  margin-left: .1em; }
+
+.fa-angle-right {
+  float: right;
+  margin-right: .1em; }
 
 #contenders {
   position: absolute;
-  top: 25px;
+  top: 2em;
   bottom: 0;
   left: 0;
   width: 100%;
   background: #ccc;
-  overflow: hidden;
-  z-index: -1; }
-  #contenders #scroller {
-    position: absolute;
-    width: 800%;
-    height: 800%;
-    -webkit-tap-highlight-color: transparent;
-    background-color: #1a1a1a;
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    -o-text-size-adjust: none;
-    text-size-adjust: none; }
-    #contenders #scroller ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      text-align: center; }
-      #contenders #scroller ul .cell {
-        position: relative;
-        display: block;
-        width: 12.5%;
-        height: 12.5%;
-        float: left;
-        background-color: #1a1a1a;
-        font-size: 1em; }
-        #contenders #scroller ul .cell .namePlateText--top {
-          width: 100%;
-          height: 3.5em;
-          background-color: #1a1a1a;
-          border-bottom: 0.1em solid #f9c039; }
-          #contenders #scroller ul .cell .namePlateText--top h2 {
-            display: inline-block;
-            margin: .2em 0 0 0;
-            font-size: 1.3em;
-            font-weight: 300;
-            text-transform: uppercase; }
-        #contenders #scroller ul .cell .slidePosition {
-          position: absolute;
-          top: 2em;
-          left: 0;
-          width: 100%;
-          text-align: center; }
-          #contenders #scroller ul .cell .slidePosition .fa-circle {
-            font-size: .7em;
-            color: #444444;
-            margin: 0 .3em;
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            transition: all 0.5s ease; }
-            #contenders #scroller ul .cell .slidePosition .fa-circle.posMarker {
-              color: #f9c039; }
-        #contenders #scroller ul .cell .arrow p {
-          margin: -.7em 0 .7em 0;
-          color: #acacac;
-          text-transform: uppercase; }
-        #contenders #scroller ul .cell .arrow--down {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%; }
-        #contenders #scroller ul .cell .arrow span {
-          font-size: 3em; }
-          #contenders #scroller ul .cell .arrow span.fa-angle-down {
-            line-height: 0; }
-        #contenders #scroller ul .cell .contentBlock {
-          position: absolute;
-          top: 27%;
-          width: 100%; }
-          #contenders #scroller ul .cell .contentBlock h3 {
-            margin-bottom: .3em;
-            font-size: 1.7em;
-            font-weight: 300;
-            text-transform: uppercase; }
-          #contenders #scroller ul .cell .contentBlock img {
-            max-width: 10em;
-            max-height: 10em; }
-          #contenders #scroller ul .cell .contentBlock p {
-            margin-top: .3em;
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.7em;
-            font-weight: 300; }
-          #contenders #scroller ul .cell .contentBlock .textBlock {
-            position: relative;
-            width: 100%; }
-            #contenders #scroller ul .cell .contentBlock .textBlock p {
-              width: 100%;
-              margin: 0;
-              padding: .5em;
-              font-family: "Montserrat", sans-serif;
-              font-size: 2.5em;
-              font-weight: 300;
-              background-color: #444444; }
-              #contenders #scroller ul .cell .contentBlock .textBlock p span {
-                text-transform: uppercase; }
-        #contenders #scroller ul .cell .backToTop {
-          position: absolute;
-          width: 100%;
-          bottom: 0;
-          left: 0;
-          cursor: pointer; }
-          #contenders #scroller ul .cell .backToTop p {
-            width: 50%;
-            margin: 0 auto;
-            margin-bottom: 1em;
-            padding: .2em;
-            font-family: "Montserrat", sans-serif;
-            text-transform: uppercase;
-            color: #1a1a1a;
-            background-color: #f9c039;
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            transition: all 0.5s ease; }
-            #contenders #scroller ul .cell .backToTop p:hover {
-              color: white;
-              background-color: #ad7b05; }
-        #contenders #scroller ul .cell__name {
-          position: relative;
-          background-size: cover;
-          border-top: 0.2em solid #f9c039; }
-          #contenders #scroller ul .cell__name .namePlateText--center {
-            position: absolute;
-            top: 42%;
-            width: 100%;
-            height: 3.5em;
-            background-color: rgba(26, 26, 26, 0.8); }
-            #contenders #scroller ul .cell__name .namePlateText--center h2 {
-              display: inline-block;
-              margin: .2em 0 0 0;
-              font-size: 1.3em;
-              font-weight: 300;
-              text-transform: uppercase; }
-          #contenders #scroller ul .cell__name .detailsPlate {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 3em;
-            background-color: rgba(26, 26, 26, 0.8);
-            text-align: center; }
-            #contenders #scroller ul .cell__name .detailsPlate p {
-              margin: .2em 0 0 0; }
-            #contenders #scroller ul .cell__name .detailsPlate span {
-              color: #f9c039;
-              font-size: 3em;
-              line-height: .5em; }
-          #contenders #scroller ul .cell__name .slidePosition {
-            top: 48%; }
-        #contenders #scroller ul .cell__notes .contentBlock .textBlock p {
-          padding: .5em;
-          font-family: "Lato", sans-serif;
-          font-size: 1.2em;
-          background-color: transparent; }
+  overflow: hidden; }
+
+#scroller {
+  position: absolute;
+  width: 800%;
+  height: 800%;
+  -webkit-tap-highlight-color: transparent;
+  background-color: #1a1a1a;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center; }
+
+.cell {
+  position: relative;
+  display: block;
+  width: 12.5%;
+  height: 12.5%;
+  float: left;
+  background-color: #1a1a1a;
+  font-size: 1em; }
+
+.namePlateText--top {
+  width: 100%;
+  height: 3.5em;
+  background-color: #1a1a1a;
+  border-bottom: 0.1em solid #f9c039; }
+
+h2 {
+  display: inline-block;
+  margin: .2em 0 0 0;
+  font-size: 1.3em;
+  font-weight: 300;
+  text-transform: uppercase; }
+
+.slidePosition {
+  position: absolute;
+  top: 2em;
+  left: 0;
+  width: 100%;
+  text-align: center; }
+  .slidePosition .fa-circle {
+    font-size: .7em;
+    color: #444444;
+    margin: 0 .3em;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    .slidePosition .fa-circle.posMarker {
+      color: #f9c039; }
+
+.arrow p {
+  margin: -.7em 0 .7em 0;
+  color: #acacac;
+  text-transform: uppercase; }
+
+.arrow--down {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; }
+
+.arrow span {
+  font-size: 3em; }
+  .arrow span.fa-angle-down {
+    line-height: 0; }
+
+h3 {
+  margin-bottom: .3em;
+  font-size: 1.7em;
+  font-weight: 300;
+  text-transform: uppercase; }
+
+.centerAlign {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.contentBlock {
+  position: relative;
+  top: 31%;
+  width: 100%; }
+  .contentBlock img {
+    width: 33%;
+    max-width: 10em; }
+  .contentBlock p {
+    margin-top: .3em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.7em;
+    font-weight: 300; }
+
+.textBlock {
+  position: relative;
+  width: 100%; }
+  .textBlock p {
+    width: 100%;
+    margin: 0;
+    padding: .5em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.5em;
+    font-weight: 300;
+    background-color: #444444; }
+    .textBlock p span {
+      text-transform: uppercase; }
+
+.backToTop {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  cursor: pointer; }
+  .backToTop p {
+    width: 10em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: .2em;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    background-color: #f9c039;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    .backToTop p:hover {
+      color: white;
+      background-color: #ad7b05; }
+
+.cell__name {
+  position: relative;
+  background-size: cover;
+  border-top: 0.2em solid #f9c039; }
+  .cell__name .slidePosition {
+    top: 42%;
+    padding-top: 1.8em; }
+
+.namePlateText--center {
+  position: absolute;
+  top: 42%;
+  width: 100%;
+  height: 3.5em;
+  background-color: rgba(26, 26, 26, 0.8); }
+  .namePlateText--center h2 {
+    display: inline-block;
+    margin: .2em 0 0 0;
+    font-size: 1.3em;
+    font-weight: 300;
+    text-transform: uppercase; }
+
+.detailsPlate {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3em;
+  background-color: rgba(26, 26, 26, 0.8);
+  text-align: center; }
+  .detailsPlate p {
+    margin: .2em 0 0 0; }
+  .detailsPlate span {
+    color: #f9c039;
+    font-size: 3em;
+    line-height: .5em; }
+
+.cell__notes .contentBlock .textBlock p {
+  padding: .5em;
+  font-family: "Lato", sans-serif;
+  font-size: 1.2em;
+  background-color: transparent; }
 
 /* Tophat */
 #tophat {
-  height: 25px;
+  height: 2em;
   background-color: #444444;
   overflow: hidden; }
 
 #logo {
-  width: 250px;
+  width: 17em;
   height: 100%;
   float: left;
-  line-height: 28px;
+  line-height: 2.5em;
   vertical-align: middle; }
   #logo img {
-    margin: 0 10px;
+    margin: 0 1em;
     width: 90%; }
-  @media (max-width: 400px) {
-    #logo {
-      width: 200px; } }
 
 .tophat-share-tools {
   float: right;
   height: 100%;
-  line-height: 35px;
-  font-size: 24px;
+  line-height: 1.6em;
+  font-size: 1.5em;
   vertical-align: middle;
   color: white;
-  margin: 0 10px;
+  margin: 0;
   text-align: center; }
   .tophat-share-tools span {
     cursor: pointer;
     vertical-align: top;
-    margin-right: 8px; }
+    margin-right: .6em; }
     .tophat-share-tools span:hover {
       color: #f9c039; }
-  @media (max-width: 760px) {
-    .tophat-share-tools {
-      font-size: 18px;
-      line-height: 29px; } }
 
 /* Leaderboard */
 #leaderboard {

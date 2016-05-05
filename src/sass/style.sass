@@ -1,260 +1,254 @@
 @import "mixins"
 @import "variables"
 @import "bourbon/bourbon"
-@import "neat/neat"
+// @import "neat/neat"
 @import "normalize"
 @import "fonts"
 
 /* General Styles */
+$bp1: 600px
+$bp2: 800px
 
 body
 	font-size: 14px
+	@media(min-width: $bp1)
+		font-size: 18px
+	@media(min-width: $bp2)
+		font-size: 20px
 p,a,span
 	font-family: $lato
 	color: $preakgold
 h1,h2,h3,h4,h5,h6
 	font-family: $montserrat
 	color: white
-#yPos
-	position: fixed
-	top: 0
-.overlay
+.namePlate
 	position: absolute
-	width: 12.5%
+	top: 45%
+	left: 0
+	width: 100%
+	height: 0
 	z-index: 1
 	+transition(all .2s linear)
-	&.namePlate
-		width: 100%
-		height: 3.5em
-		top: 45%
-		// background-color: rgba(26,26,26,.8)
-		span
-			font-size: 3em
-			&.fa-angle-left
-				float: left
-				margin-left: .1em
-			&.fa-angle-right
-				float: right
-				margin-right: .1em
+	span 
+		font-size: 3em
 	&.stick
-		top: 25px
+		top: 2em
+.fa-angle-left
+	float: left
+	margin-left: .1em
+.fa-angle-right
+	float: right
+	margin-right: .1em
 #contenders
 	position: absolute
-	top: 25px
+	top: 2em
 	bottom: 0
 	left: 0
 	width: 100%
 	background: #ccc
 	overflow: hidden
-	z-index: -1
-	#scroller 
+#scroller 
+	position: absolute
+	width: 800%
+	height: 800%
+	-webkit-tap-highlight-color: rgba(0,0,0,0)
+	background-color: $offblack
+	-webkit-transform: translateZ(0)
+	-moz-transform: translateZ(0)
+	-ms-transform: translateZ(0)
+	-o-transform: translateZ(0)
+	transform: translateZ(0)
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+	-webkit-text-size-adjust: none
+	-moz-text-size-adjust: none
+	-ms-text-size-adjust: none
+	-o-text-size-adjust: none
+	text-size-adjust: none
+ul
+	list-style: none
+	padding: 0
+	margin: 0
+	width: 100%
+	height: 100%
+	text-align: center
+.cell
+	position: relative
+	display: block
+	width: 12.5%
+	height: 12.5%
+	float: left
+	background-color: $offblack
+	font-size: 1em
+.namePlateText--top
+	width: 100%
+	height: 3.5em
+	background-color: $offblack
+	border-bottom: .1em solid $preakgold 
+h2
+	display: inline-block
+	margin: .2em 0 0 0
+	font-size: 1.3em
+	font-weight: 300
+	text-transform: uppercase
+.slidePosition
+	position: absolute
+	top: 2em
+	left: 0
+	width: 100%
+	text-align: center
+	.fa-circle
+		font-size: .7em
+		color: $darkgray
+		margin: 0 .3em
+		+transition(all .5s ease)
+		&.posMarker
+			color: $preakgold
+.arrow
+	p
+		margin: -.7em 0 .7em 0
+		color: $lightgray
+		text-transform: uppercase
+	&--up
+	&--down
 		position: absolute
-		width: 800%
-		height: 800%
-		-webkit-tap-highlight-color: rgba(0,0,0,0)
-		background-color: $offblack
-		-webkit-transform: translateZ(0)
-		-moz-transform: translateZ(0)
-		-ms-transform: translateZ(0)
-		-o-transform: translateZ(0)
-		transform: translateZ(0)
-		-webkit-touch-callout: none
-		-webkit-user-select: none
-		-moz-user-select: none
-		-ms-user-select: none
-		user-select: none
-		-webkit-text-size-adjust: none
-		-moz-text-size-adjust: none
-		-ms-text-size-adjust: none
-		-o-text-size-adjust: none
-		text-size-adjust: none
-		ul
-			list-style: none
-			padding: 0
-			margin: 0
-			width: 100%
-			height: 100%
-			text-align: center
-			.cell
-				position: relative
-				display: block
-				width: 12.5%
-				height: 12.5%
-				float: left
-				background-color: $offblack
-				font-size: 1em
-
-				.namePlateText--top
-					width: 100%
-					height: 3.5em
-					background-color: $offblack
-					border-bottom: .1em solid $preakgold 
-					h2
-						display: inline-block
-						margin: .2em 0 0 0
-						font-size: 1.3em
-						font-weight: 300
-						text-transform: uppercase
-				.slidePosition
-					position: absolute
-					top: 2em
-					left: 0
-					width: 100%
-					text-align: center
-					.fa-circle
-						font-size: .7em
-						color: $darkgray
-						margin: 0 .3em
-						+transition(all .5s ease)
-						&.posMarker
-							color: $preakgold
-				.arrow
-					p
-						margin: -.7em 0 .7em 0
-						color: $lightgray
-						text-transform: uppercase
-					&--up
-					&--down
-						position: absolute
-						bottom: 0
-						left: 0
-						width: 100%
-					
-					span	
-						font-size: 3em
-						&.fa-angle-down
-							line-height: 0
-				.contentBlock
-					position: absolute
-					top: 27%
-					width: 100%
-					h3
-						margin-bottom: .3em
-						font-size: 1.7em
-						font-weight: 300
-						text-transform: uppercase
-					img
-						max-width: 10em
-						max-height: 10em
-					p
-						margin-top: .3em
-						font-family: $montserrat
-						font-size: 1.7em
-						font-weight: 300
-					.textBlock
-						position: relative
-						width: 100%
-						p
-							width: 100%
-							margin: 0
-							padding: .5em
-							font-family: $montserrat
-							font-size: 2.5em
-							font-weight: 300
-							background-color: $darkgray
-							span
-								text-transform: uppercase
-				.backToTop
-					position: absolute
-					width: 100%
-					bottom: 0
-					left: 0
-					cursor: pointer
-					p
-						width: 50%
-						margin: 0 auto
-						margin-bottom: 1em
-						padding: .2em
-						font-family: $montserrat
-						text-transform: uppercase
-						color: $offblack
-						background-color: $preakgold
-						+transition(all .5s ease)
-						&:hover
-							color: white
-							background-color: darken($preakgold, 25)							
-				&__name
-					position: relative
-					background-size: cover
-					border-top: .2em solid $preakgold
-					.namePlateText--center
-						position: absolute
-						top: 42%
-						width: 100%
-						height: 3.5em
-						background-color: rgba(26,26,26,.8)
-						h2
-							display: inline-block
-							margin: .2em 0 0 0
-							font-size: 1.3em
-							font-weight: 300
-							text-transform: uppercase
-					.detailsPlate
-						position: absolute
-						bottom: 0
-						width: 100%
-						height: 3em
-						background-color: rgba(26,26,26,.8)
-						text-align: center
-						p
-							margin: .2em 0 0 0
-						span
-							color: $preakgold
-							font-size: 3em
-							line-height: .5em
-					.slidePosition
-						top: 48%
-				&__jockey
-				&__odds
-				&__notes
-					.contentBlock
-						.textBlock
-							p
-								padding: .5em
-								font-family: $lato
-								font-size: 1.2em
-								background-color: transparent
-				&__owner
-				&__trainer
-				&__breeder
-				&__earnings
-				&__prevstart
+		bottom: 0
+		left: 0
+		width: 100%
+	
+	span	
+		font-size: 3em
+		&.fa-angle-down
+			line-height: 0
+h3
+	margin-bottom: .3em
+	font-size: 1.7em
+	font-weight: 300
+	text-transform: uppercase
+.centerAlign
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+.contentBlock
+	position: relative
+	top: 31%
+	width: 100%
+	img
+		width: 33%
+		max-width: 10em
+	p
+		margin-top: .3em
+		font-family: $montserrat
+		font-size: 1.7em
+		font-weight: 300
+.textBlock
+	position: relative
+	width: 100%
+	p
+		width: 100%
+		margin: 0
+		padding: .5em
+		font-family: $montserrat
+		font-size: 2.5em
+		font-weight: 300
+		background-color: $darkgray
+		span
+			text-transform: uppercase
+.backToTop
+	position: absolute
+	width: 100%
+	bottom: 0
+	left: 0
+	cursor: pointer
+	p
+		width: 10em
+		margin: 0 auto
+		margin-bottom: 1em
+		padding: .2em
+		font-family: $montserrat
+		text-transform: uppercase
+		color: $offblack
+		background-color: $preakgold
+		+transition(all .5s ease)
+		&:hover
+			color: white
+			background-color: darken($preakgold, 25)							
+.cell__name
+	position: relative
+	background-size: cover
+	border-top: .2em solid $preakgold
+	.slidePosition
+		top: 42%
+		padding-top: 1.8em
+.namePlateText--center
+	position: absolute
+	top: 42%
+	width: 100%
+	height: 3.5em
+	background-color: rgba(26,26,26,.8)
+	h2
+		display: inline-block
+		margin: .2em 0 0 0
+		font-size: 1.3em
+		font-weight: 300
+		text-transform: uppercase
+.detailsPlate
+	position: absolute
+	bottom: 0
+	width: 100%
+	height: 3em
+	background-color: rgba(26,26,26,.8)
+	text-align: center
+	p
+		margin: .2em 0 0 0
+	span
+		color: $preakgold
+		font-size: 3em
+		line-height: .5em	
+.cell__notes
+	.contentBlock
+		.textBlock
+			p
+				padding: .5em
+				font-family: $lato
+				font-size: 1.2em
+				background-color: transparent
 
 
 /* Tophat */
 #tophat
-	height: 25px
+	height: 2em
 	background-color: $darkgray
 	overflow: hidden
 #logo
-	width: 250px
+	width: 17em
 	height: 100%
 	float: left
-	line-height: 28px
+	line-height: 2.5em
 	vertical-align: middle
 	img
-		margin: 0 10px
+		margin: 0 1em
 		width: 90%
-	@media (max-width: 400px)
-		width: 200px
 .tophat-share-tools
 	float: right
 	height: 100%
-	line-height: 35px
-	font-size: 24px
+	line-height: 1.6em
+	font-size: 1.5em
 	vertical-align: middle
 	color: white
-	margin: 0 10px
+	margin: 0
 	text-align: center
 	span
 		cursor: pointer
 		vertical-align: top
-		margin-right: 8px
+		margin-right: .6em
 		&:hover
 			color: $preakgold
-	@media (max-width: 760px)
-		font-size: 18px
-		line-height: 29px
 /* Leaderboard */
 #leaderboard
 	width: 728px 
