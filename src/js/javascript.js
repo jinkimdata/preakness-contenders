@@ -51,13 +51,6 @@ var preaknessContenders = {
 				$('#sticky').removeClass('stick');
 				$('#sticky-anchor').height(0);
 			};
-			// if (myScroll.currentPage.pageX == 0) {
-			// 	$('.fa-angle-left').addClass('fade');
-			// } else if (myScroll.currentPage.pageX == 7) {
-			// 	$('.fa-angle-right').addClass('fade');
-			// } else {
-			// 	$('.fade').removeClass('fade');
-			// };
 		};
 		$('.fa-angle-left').on('click touchend', function(e){
 			if (timer) {
@@ -65,7 +58,7 @@ var preaknessContenders = {
 			};
 			timer = setTimeout(function(){
 				if (myScroll.currentPage.pageX > 0) {
-					myScroll.goToPage(myScroll.currentPage.pageX-1, myScroll.currentPage.pageY);
+					myScroll.prev();
 				} else if (myScroll.currentPage.pageX == 0) {
 					myScroll.goToPage(7, myScroll.currentPage.pageY);
 				};
@@ -77,7 +70,7 @@ var preaknessContenders = {
 			};
 			timer = setTimeout(function(){
 				if (myScroll.currentPage.pageX < 7) {
-					myScroll.goToPage(myScroll.currentPage.pageX+1, myScroll.currentPage.pageY);
+					myScroll.next();
 				} else if (myScroll.currentPage.pageX == 7) {
 					myScroll.goToPage(0, myScroll.currentPage.pageY);
 				};
@@ -109,7 +102,7 @@ var preaknessContenders = {
 		});
 		$('.navBlock').on('click', function(e){
 			var selected = $(this);
-			var pos = Number(selected.attr('data-pos'));	
+			var pos = Number(selected.attr('data-pos'));
 			if (timer) {
 				clearTimeout(timer);
 			};
