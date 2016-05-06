@@ -473,10 +473,63 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
   color: white; }
 
+/* Tophat */
+#tophat {
+  height: 2em;
+  background-color: #444444;
+  overflow: hidden; }
+
+#logo {
+  width: 17em;
+  height: 100%;
+  float: left;
+  line-height: 2.5em;
+  vertical-align: middle; }
+  #logo img {
+    margin: 0 1em;
+    width: 90%; }
+
+.nav {
+  display: none; }
+  @media (min-width: 1000px) {
+    .nav {
+      display: inline-block; } }
+
+.navBlock {
+  display: inline-block;
+  padding: 1em .3em;
+  font-family: "Montserrat", sans-serif;
+  font-size: .6em;
+  text-transform: uppercase;
+  color: #acacac;
+  cursor: pointer; }
+  @media (min-width: 1280px) {
+    .navBlock {
+      padding: .4em .4em;
+      font-size: 1em; } }
+  .navBlock.selected, .navBlock:hover {
+    color: #f9c039; }
+
+.tophat-share-tools {
+  float: right;
+  height: 100%;
+  line-height: 1.8em;
+  font-size: 1.2em;
+  vertical-align: middle;
+  margin: 0;
+  text-align: center; }
+  .tophat-share-tools span {
+    margin-right: .6em;
+    color: white;
+    vertical-align: top;
+    cursor: pointer; }
+    .tophat-share-tools span:hover {
+      color: #f9c039; }
+
 .rank {
   position: relative;
   height: 2em;
-  width: 5.5em;
+  width: 4.5em;
   background: transparent;
   margin-left: 1em;
   color: white;
@@ -491,7 +544,7 @@ h1, h2, h3, h4, h5, h6 {
 .rankText {
   position: absolute;
   top: 0;
-  right: .2em;
+  right: .5em;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase; }
 
@@ -573,28 +626,7 @@ ul {
   height: 12.5%;
   float: left;
   background-color: #1a1a1a;
-  font-size: 1em;
-  cursor: move;
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab; }
-  .cell:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing; }
-
-.namePlateText--top {
-  width: 100%;
-  height: 3.5em;
-  background-color: #1a1a1a;
-  border-bottom: 0.1em solid #f9c039; }
-
-h2 {
-  display: inline-block;
-  margin: .2em 0 0 0;
-  font-size: 1.3em;
-  font-weight: 300;
-  text-transform: uppercase; }
+  font-size: 1em; }
 
 .slidePosition {
   position: absolute;
@@ -604,15 +636,14 @@ h2 {
   text-align: center; }
   .slidePosition .fa-circle {
     font-size: .7em;
-    color: #444444;
+    color: #acacac;
     margin: 0 .3em; }
     .slidePosition .fa-circle.posMarker {
       color: #f9c039; }
 
 .arrow {
   position: absolute;
-  width: 100%;
-  cursor: pointer; }
+  width: 100%; }
   .arrow--up {
     top: 3em;
     left: 0; }
@@ -624,7 +655,8 @@ h2 {
     color: #acacac;
     text-transform: uppercase; }
   .arrow span {
-    font-size: 3em; }
+    font-size: 3em;
+    cursor: pointer; }
     .arrow span.fa-angle-down {
       line-height: 0; }
 
@@ -656,47 +688,18 @@ h3 {
 
 .textBlock {
   position: relative;
-  width: 100%; }
+  width: 100%;
+  background-color: #444444; }
   .textBlock p {
     width: 100%;
-    margin: 0;
+    max-width: 720px;
+    margin: 0 auto;
     padding: .5em;
     font-family: "Montserrat", sans-serif;
     font-size: 2.5em;
-    font-weight: 300;
-    background-color: #444444; }
+    font-weight: 300; }
     .textBlock p span {
       text-transform: uppercase; }
-
-.backToTop {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  cursor: pointer; }
-  .backToTop p {
-    width: 10em;
-    margin: 0 auto;
-    margin-bottom: 1em;
-    padding: .2em;
-    font-family: "Montserrat", sans-serif;
-    text-transform: uppercase;
-    color: #1a1a1a;
-    background-color: #f9c039;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    transition: all 0.5s ease; }
-    .backToTop p:hover {
-      color: white;
-      background-color: #ad7b05; }
-
-.cell__name {
-  position: relative;
-  background-size: cover;
-  border-top: 0.2em solid #f9c039; }
-  .cell__name .slidePosition {
-    top: 42%;
-    padding-top: 1.8em; }
 
 .namePlateText--center {
   position: absolute;
@@ -726,43 +729,125 @@ h3 {
     font-size: 3em;
     line-height: .5em; }
 
-.cell__notes .contentBlock .textBlock p {
-  padding: .5em;
-  font-family: "Lato", sans-serif;
-  font-size: 1.2em;
+.namePlateText--top {
+  width: 100%;
+  height: 3.5em;
+  background-color: #1a1a1a;
+  border-bottom: 0.1em solid #f9c039; }
+
+h2 {
+  display: inline-block;
+  margin: .2em 0 0 0;
+  font-size: 1.3em;
+  font-weight: 300;
+  color: #f9c039;
+  text-transform: uppercase; }
+
+.cell__name {
+  position: relative;
+  border-top: 0.2em solid #f9c039;
+  background: no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+  .cell__name--0 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--0 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--0 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name--1 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--1 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--1 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name--2 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--2 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--2 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name--3 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--3 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--3 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name--4 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--4 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--4 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name--5 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--5 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--5 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name--6 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--6 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--6 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name--7 {
+    background-image: url("../images/0sm.png"); }
+    @media (min-width: 800px) {
+      .cell__name--7 {
+        background-image: url("../images/0md.png"); } }
+    @media (min-width: 1280px) {
+      .cell__name--7 {
+        background-image: url("../images/0lg.png"); } }
+  .cell__name .slidePosition {
+    top: 42%;
+    padding-top: 1.8em; }
+
+.cell__notes .contentBlock .textBlock {
   background-color: transparent; }
+  .cell__notes .contentBlock .textBlock p {
+    padding: .5em;
+    font-family: "Lato", sans-serif;
+    font-size: 1.2em;
+    background-color: transparent; }
 
-/* Tophat */
-#tophat {
-  height: 2em;
-  background-color: #444444;
-  overflow: hidden; }
-
-#logo {
-  width: 17em;
-  height: 100%;
-  float: left;
-  line-height: 2.5em;
-  vertical-align: middle; }
-  #logo img {
-    margin: 0 1em;
-    width: 90%; }
-
-.tophat-share-tools {
-  float: right;
-  height: 100%;
-  line-height: 1.6em;
-  font-size: 1.5em;
-  vertical-align: middle;
-  margin: 0;
-  text-align: center; }
-  .tophat-share-tools span {
-    margin-right: .6em;
-    color: white;
-    vertical-align: top;
-    cursor: pointer; }
-    .tophat-share-tools span:hover {
-      color: #f9c039; }
+.backToTop {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  cursor: pointer; }
+  .backToTop p {
+    width: 10em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: .2em;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    background-color: #f9c039;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    .backToTop p:hover {
+      color: white;
+      background-color: #ad7b05; }
 
 /* Leaderboard */
 #leaderboard {

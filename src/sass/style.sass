@@ -6,41 +6,101 @@
 @import "fonts"
 
 /* General Styles */
-$bp1: 600px
-$bp2: 800px
+$bp-1: 600px
+$bp-2: 800px
+$bp-25: 1000px
+$bp-3: 1280px
+
+$base: $offblack
+
+$accent-g0: white
+$accent-g1: $offblack
+$accent-g2: $lightgray
+$accent-g3: $darkgray
+
+$accent-c0: $preakgold
+
+$text-0: $lato
+$text-1: $montserrat
 
 body
 	font-size: 14px
-	@media(min-width: $bp1)
+	@media(min-width: $bp-1)
 		font-size: 18px
-	@media(min-width: $bp2)
+	@media(min-width: $bp-2)
 		font-size: 20px
 p,a,span
-	font-family: $lato
-	color: $preakgold
+	font-family: $text-0
+	color: $accent-c0
 h1,h2,h3,h4,h5,h6
+	font-family: $text-1
+	color: $accent-g0
+/* Tophat */
+#tophat
+	height: 2em
+	background-color: $accent-g3
+	overflow: hidden
+#logo
+	width: 17em
+	height: 100%
+	float: left
+	line-height: 2.5em
+	vertical-align: middle
+	img
+		margin: 0 1em
+		width: 90%
+.nav
+	display: none
+	@media(min-width: $bp-25)
+		display: inline-block
+.navBlock
+	display: inline-block
+	padding: 1em .3em
 	font-family: $montserrat
-	color: white
+	font-size: .6em
+	text-transform: uppercase
+	color: $accent-g2
+	cursor: pointer
+	@media(min-width: $bp-3)
+		padding: .4em .4em
+		font-size: 1em
+	&.selected, &:hover
+		color: $accent-c0
+.tophat-share-tools
+	float: right
+	height: 100%
+	line-height: 1.8em
+	font-size: 1.2em
+	vertical-align: middle
+	margin: 0
+	text-align: center
+	span
+		margin-right: .6em
+		color: $accent-g0
+		vertical-align: top
+		cursor: pointer
+		&:hover
+			color: $accent-c0
 .rank
 	position: relative
 	height: 2em
-	width: 5.5em
+	width: 4.5em
 	background: transparent
 	margin-left: 1em
-	color: white
+	color: $accent-g0
 	&:after
 	position: absolute
 	content: ''
 	top: 0
 	right: 0
 	border-style: solid
-	border-color: $preakgold transparent $preakgold transparent
+	border-color: $accent-c0 transparent $accent-c0 transparent
 	border-width: 1.5em 0 0 1.5em
 .rankText
 	position: absolute
 	top: 0
-	right: .2em
-	font-family: $montserrat
+	right: .5em
+	font-family: $text-1
 	text-transform: uppercase
 .namePlate
 	position: absolute
@@ -56,7 +116,7 @@ h1,h2,h3,h4,h5,h6
 		font-size: 3em
 		+transition(all .2s ease)
 		&.fade
-			color: $lightgray
+			color: $accent-g2
 			cursor: default
 	&.stick
 		top: 2em
@@ -80,7 +140,7 @@ h1,h2,h3,h4,h5,h6
 	width: 800%
 	height: 800%
 	-webkit-tap-highlight-color: rgba(0,0,0,0)
-	background-color: $offblack
+	background-color: $base
 	-webkit-transform: translateZ(0)
 	-moz-transform: translateZ(0)
 	-ms-transform: translateZ(0)
@@ -109,27 +169,16 @@ ul
 	width: 12.5%
 	height: 12.5%
 	float: left
-	background-color: $offblack
+	background-color: $base
 	font-size: 1em
-	cursor: move
-	cursor: grab
-	cursor: -moz-grab
-	cursor: -webkit-grab
-	&:active
-		cursor: grabbing
-		cursor: -moz-grabbing
-		cursor: -webkit-grabbing
-.namePlateText--top
-	width: 100%
-	height: 3.5em
-	background-color: $offblack
-	border-bottom: .1em solid $preakgold 
-h2
-	display: inline-block
-	margin: .2em 0 0 0
-	font-size: 1.3em
-	font-weight: 300
-	text-transform: uppercase
+	// cursor: move
+	// cursor: grab
+	// cursor: -moz-grab
+	// cursor: -webkit-grab
+	// &:active
+	// 	cursor: grabbing
+	// 	cursor: -moz-grabbing
+	// 	cursor: -webkit-grabbing
 .slidePosition
 	position: absolute
 	top: 2em
@@ -138,14 +187,13 @@ h2
 	text-align: center
 	.fa-circle
 		font-size: .7em
-		color: $darkgray
+		color: $accent-g2
 		margin: 0 .3em
 		&.posMarker
-			color: $preakgold
+			color: $accent-c0
 .arrow
 	position: absolute
 	width: 100%
-	cursor: pointer
 	&--up
 		top: 3em
 		left: 0
@@ -154,10 +202,11 @@ h2
 		left: 0
 	p
 		margin: -.7em 0 .7em 0
-		color: $lightgray
+		color: $accent-g2
 		text-transform: uppercase
 	span	
 		font-size: 3em
+		cursor: pointer
 		&.fa-angle-down
 			line-height: 0
 h3
@@ -180,48 +229,23 @@ h3
 		max-width: 10em
 	p
 		margin-top: .3em
-		font-family: $montserrat
+		font-family: $text-1
 		font-size: 1.7em
 		font-weight: 300
 .textBlock
 	position: relative
 	width: 100%
+	background-color: $accent-g3
 	p
 		width: 100%
-		margin: 0
+		max-width: 720px
+		margin: 0 auto
 		padding: .5em
-		font-family: $montserrat
+		font-family: $text-1
 		font-size: 2.5em
 		font-weight: 300
-		background-color: $darkgray
 		span
 			text-transform: uppercase
-.backToTop
-	position: absolute
-	width: 100%
-	bottom: 0
-	left: 0
-	cursor: pointer
-	p
-		width: 10em
-		margin: 0 auto
-		margin-bottom: 1em
-		padding: .2em
-		font-family: $montserrat
-		text-transform: uppercase
-		color: $offblack
-		background-color: $preakgold
-		+transition(all .5s ease)
-		&:hover
-			color: white
-			background-color: darken($preakgold, 25)							
-.cell__name
-	position: relative
-	background-size: cover
-	border-top: .2em solid $preakgold
-	.slidePosition
-		top: 42%
-		padding-top: 1.8em
 .namePlateText--center
 	position: absolute
 	top: 42%
@@ -245,48 +269,110 @@ h3
 	p
 		margin: .2em 0 0 0
 	span
-		color: $preakgold
+		color: $accent-c0
 		font-size: 3em
-		line-height: .5em	
+		line-height: .5em
+.namePlateText--top
+	width: 100%
+	height: 3.5em
+	background-color: $base
+	border-bottom: .1em solid $accent-c0 
+h2
+	display: inline-block
+	margin: .2em 0 0 0
+	font-size: 1.3em
+	font-weight: 300
+	color: $preakgold
+	text-transform: uppercase
+.cell__name
+	position: relative
+	border-top: .2em solid $accent-c0
+	background: no-repeat center center
+	-webkit-background-size: cover
+	-moz-background-size: cover
+	-o-background-size: cover
+	background-size: cover
+	&--0
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	&--1
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	&--2
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	&--3
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	&--4
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	&--5
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	&--6
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	&--7
+		background-image: url('../images/0sm.png')
+		@media(min-width: $bp-2)
+			background-image: url('../images/0md.png')
+		@media(min-width: $bp-3)
+			background-image: url('../images/0lg.png')
+	.slidePosition
+		top: 42%
+		padding-top: 1.8em
 .cell__notes
 	.contentBlock
 		.textBlock
+			background-color: transparent
 			p
 				padding: .5em
-				font-family: $lato
+				font-family: $text-0
 				font-size: 1.2em
 				background-color: transparent
 
-
-/* Tophat */
-#tophat
-	height: 2em
-	background-color: $darkgray
-	overflow: hidden
-#logo
-	width: 17em
-	height: 100%
-	float: left
-	line-height: 2.5em
-	vertical-align: middle
-	img
-		margin: 0 1em
-		width: 90%
-.tophat-share-tools
-	float: right
-	height: 100%
-	line-height: 1.6em
-	font-size: 1.5em
-	vertical-align: middle
-	margin: 0
-	text-align: center
-	span
-		margin-right: .6em
-		color: white
-		vertical-align: top
-		cursor: pointer
+.backToTop
+	position: absolute
+	width: 100%
+	bottom: 0
+	left: 0
+	cursor: pointer
+	p
+		width: 10em
+		margin: 0 auto
+		margin-bottom: 1em
+		padding: .2em
+		font-family: $text-1
+		text-transform: uppercase
+		color: $base
+		background-color: $accent-c0
+		+transition(all .5s ease)
 		&:hover
-			color: $preakgold
+			color: $accent-g0
+			background-color: darken($accent-c0, 25)
+
 /* Leaderboard */
 #leaderboard
 	width: 728px 

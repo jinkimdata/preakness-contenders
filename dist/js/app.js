@@ -1657,9 +1657,9 @@ var preaknessContenders = {
             momentum: false,
             snap: true,
             mouseWheel: true,
+            disableMouse: true,
             probeType: 3,
-            bounce: false,
-            keyBindings: true
+            bounce: false
         });
         document.addEventListener("touchend", function(e) {
             e.preventDefault();
@@ -1674,48 +1674,76 @@ var preaknessContenders = {
             }, 100);
         });
         function sticky_relocate() {
-            var slidePos = getSlidePos();
-            if (slidePos[1] > 0) {
+            if (myScroll.currentPage.pageY > 0) {
                 $("#sticky").addClass("stick");
                 $("#sticky-anchor").height($("#sticky").outerHeight());
             } else {
                 $("#sticky").removeClass("stick");
                 $("#sticky-anchor").height(0);
             }
-            if (slidePos[0] == 0) {
-                $(".fa-angle-left").addClass("fade");
-            } else if (slidePos[0] == 7) {
-                $(".fa-angle-right").addClass("fade");
-            } else {
-                $(".fade").removeClass("fade");
+        }
+        $(".fa-angle-left").on("click touchend", function(e) {
+            if (timer) {
+                clearTimeout(timer);
             }
-        }
-        $(".backToTop").on("click touchend", function() {
-            var slidePos = getSlidePos();
-            myScroll.goToPage(slidePos[0], 0);
+            timer = setTimeout(function() {
+                if (myScroll.currentPage.pageX > 0) {
+                    myScroll.goToPage(myScroll.currentPage.pageX - 1, myScroll.currentPage.pageY);
+                } else if (myScroll.currentPage.pageX == 0) {
+                    myScroll.goToPage(7, myScroll.currentPage.pageY);
+                }
+            }, 50);
         });
-        $(".fa-angle-up").on("click touchend", function() {
-            var slidePos = getSlidePos();
-            myScroll.goToPage(slidePos[0], slidePos[1] - 1);
+        $(".fa-angle-right").on("click touchend", function(e) {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                if (myScroll.currentPage.pageX < 7) {
+                    myScroll.goToPage(myScroll.currentPage.pageX + 1, myScroll.currentPage.pageY);
+                } else if (myScroll.currentPage.pageX == 7) {
+                    myScroll.goToPage(0, myScroll.currentPage.pageY);
+                }
+            }, 50);
         });
-        $(".fa-angle-down").on("click touchend", function() {
-            var slidePos = getSlidePos();
-            myScroll.goToPage(slidePos[0], slidePos[1] + 1);
+        $(".fa-angle-up").on("click touchend", function(e) {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                myScroll.goToPage(myScroll.currentPage.pageX, myScroll.currentPage.pageY - 1);
+            }, 50);
         });
-        $(".fa-angle-left").on("click touchend", function() {
-            var slidePos = getSlidePos();
-            myScroll.goToPage(slidePos[0] - 1, slidePos[1]);
+        $(".fa-angle-down").on("click touchend", function(e) {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                myScroll.goToPage(myScroll.currentPage.pageX, myScroll.currentPage.pageY + 1);
+            }, 50);
         });
-        $(".fa-angle-right").on("click touchend", function() {
-            var slidePos = getSlidePos();
-            myScroll.goToPage(slidePos[0] + 1, slidePos[1]);
+        $(".backToTop").on("click touchend", function(e) {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                myScroll.goToPage(myScroll.currentPage.pageX, 0);
+            }, 50);
         });
-        function getSlidePos() {
-            var pos = myScroll.getComputedPosition();
-            var screenWidth = $(window).width();
-            var screenHeight = $(window).height();
-            return [ Math.round(Math.abs(pos.x) / screenWidth), Math.round(Math.abs(pos.y) / screenHeight) ];
-        }
+        $(".navBlock").on("click", function(e) {
+            var selected = $(this);
+            var pos = Number(selected.attr("data-pos"));
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                myScroll.goToPage(myScroll.currentPage.pageX, pos);
+            }, 50);
+        });
+        myScroll.on("scrollEnd", function() {
+            $(".selected").removeClass("selected");
+            $(".navBlock--" + myScroll.currentPage.pageY).addClass("selected");
+        });
     }
 };
 

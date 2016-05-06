@@ -38,18 +38,26 @@ html(class="no-js", lang="en")
 		meta(name="twitter:image", content="")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
-	//- body(onload="preaknessContenders.scrollFunctions()")
 	body
 		#tophat
 			.group
 			#logo
 				a(href="http://www.baltimoresun.com")
 					img(src="images/baltimore-sun-logo-white.png" border="0")
+			.nav
+				.navBlock.navBlock--0.selected(data-pos="0") Horse
+				.navBlock.navBlock--1(data-pos="1") Odds
+				.navBlock.navBlock--2(data-pos="2") Jockey
+				.navBlock.navBlock--3(data-pos="3") Trainer
+				.navBlock.navBlock--4(data-pos="4") Owner
+				.navBlock.navBlock--5(data-pos="5") Breeder
+				.navBlock.navBlock--6(data-pos="6") Earnings
+				.navBlock.navBlock--7(data-pos="7") Notes
 			.tophat-share-tools
 				span.icon-facebook
 				span.icon-twitter
 		.overlay.namePlate#sticky
-			span.fa.fa-angle-left.fade
+			span.fa.fa-angle-left
 			span.fa.fa-angle-right
 		#contenders
 			#scroller
@@ -59,9 +67,9 @@ html(class="no-js", lang="en")
 						//- For every 8 elements, we create something different.
 						//- This is the first slide for each horse, featuring a near-fullscreen image
 						- if (i<8) {
-							li(class="cell cell__name" style="background-image: url('#{datalink}images/#{i}.jpg');")
+							li(class="cell cell__name cell__name--#{i}")
 								.rank 
-								.rankText Rank #{i+1}
+								.rankText PP: #{i+1}
 								.namePlateText.namePlateText--center
 									//- The nameplate.jade file simply assigns h2 name tags for each horse. It is used for every slide.
 									h2 #{content[i%8].horse}
@@ -70,6 +78,24 @@ html(class="no-js", lang="en")
 									p Details
 									span.fa.fa-angle-down
 						- } else if (i < 16) {
+							li(class="cell cell__odds")
+								.namePlateText.namePlateText--top
+									h2 #{content[i%8].horse}
+								include includes/slidepos.jade
+								.centerAlign
+									.contentBlock
+										h3 Odds
+										.textBlock
+											p #{content[i%8].odds}
+												br
+												span (#{content[i%8].oddsReturns})
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Image
+								.arrow.arrow--down
+									p.nextSlidePreview Jockey
+									span.fa.fa-angle-down
+						- } else if (i < 24) {
 							li(class="cell cell__jockey")
 								.namePlateText.namePlateText--top
 									h2 #{content[i%8].horse}
@@ -85,42 +111,29 @@ html(class="no-js", lang="en")
 												p #{content[i%8].jockey}
 										- }
 								.arrow.arrow--up
-									span.fa.fa-angle-up
-								.arrow.arrow--down
+									span.fa.fa-angle-up 
 									p.nextSlidePreview Odds
+								.arrow.arrow--down
+									p.nextSlidePreview Trainer
 									span.fa.fa-angle-down
-						- } else if (i < 24) {
-							li(class="cell cell__odds")
+						- } else if (i < 32) {
+							li(class="cell cell__trainer")
 								.namePlateText.namePlateText--top
 									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
 								.centerAlign
 									.contentBlock
-										h3 Odds
-										.textBlock
-											p #{content[i%8].odds}
-												br
-												span (#{content[i%8].oddsReturns})
+										h3 Trainer
+										- if (content[i%8].trainerImgBool) {
+											img(src="#{datalink}images/jockey#{i%8}.png")
+											p #{content[i%8].trainer}
+										- } else {
+											.textBlock
+												p #{content[i%8].trainer}
+										- }
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Jockey
-								.arrow.arrow--down
-									p.nextSlidePreview Notes
-									span.fa.fa-angle-down
-						- } else if (i < 32) {
-							li(class="cell cell__notes")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
-									.contentBlock
-										h3 Notes
-										.textBlock
-											p #{content[i%8].notes1}
-											p #{content[i%8].notes2}
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Odds
 								.arrow.arrow--down
 									p.nextSlidePreview Owner
 									span.fa.fa-angle-down
@@ -141,32 +154,11 @@ html(class="no-js", lang="en")
 										- }
 								.arrow.arrow--up
 									span.fa.fa-angle-up
-									p.nextSlidePreview Notes
-								.arrow.arrow--down
 									p.nextSlidePreview Trainer
-									span.fa.fa-angle-down
-						- } else if (i < 48) {
-							li(class="cell cell__trainer")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
-									.contentBlock
-										h3 Trainer
-										- if (content[i%8].trainerImgBool) {
-											img(src="#{datalink}images/jockey#{i%8}.png")
-											p #{content[i%8].trainer}
-										- } else {
-											.textBlock
-												p #{content[i%8].trainer}
-										- }
-								.arrow.arrow--up
-									span.fa.fa-angle-up
-									p.nextSlidePreview Owner
 								.arrow.arrow--down
 									p.nextSlidePreview Breeder
 									span.fa.fa-angle-down
-						- } else if (i < 56) {
+						- } else if (i < 48) {
 							li(class="cell cell__breeder")
 								.namePlateText.namePlateText--top
 									h2 #{content[i%8].horse}
@@ -183,11 +175,11 @@ html(class="no-js", lang="en")
 										- }
 								.arrow.arrow--up
 									span.fa.fa-angle-up
-									p.nextSlidePreview Trainer
+									p.nextSlidePreview Owner
 								.arrow.arrow--down
 									p.nextSlidePreview Earnings
 									span.fa.fa-angle-down
-						- } else if (i < 64) {
+						- } else if (i < 56) {
 							li(class="cell cell__earnings")
 								.namePlateText.namePlateText--top
 									h2 #{content[i%8].horse}
@@ -200,6 +192,23 @@ html(class="no-js", lang="en")
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Breeder
+								.arrow.arrow--down
+									p.nextSlidePreview Notes
+									span.fa.fa-angle-down
+						- } else if (i < 64) {
+							li(class="cell cell__notes")
+								.namePlateText.namePlateText--top
+									h2 #{content[i%8].horse}
+								include includes/slidepos.jade
+								.centerAlign
+									.contentBlock
+										h3 Notes
+										.textBlock
+											p #{content[i%8].notes1}
+											p #{content[i%8].notes2}
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Earnings
 								.backToTop 
 									p Back to top
 						- }
