@@ -41,6 +41,8 @@ html(class="no-js", lang="en")
 			#logo
 				a(href="http://www.baltimoresun.com")
 					img(src="images/baltimore-sun-logo-white.png" border="0")
+			//- This hidden class is removed when the splash page disappears. It is written this way and not in 
+			//- jQuery (.nav.fadeIn()) in order to accomodate for media queries.
 			.nav.hidden
 				.navBlock.navBlock--0.selected(data-pos="0") Horse
 				.navBlock.navBlock--1(data-pos="1") Odds
@@ -54,6 +56,7 @@ html(class="no-js", lang="en")
 			.tophat-share-tools
 				span.icon-facebook
 				span.icon-twitter
+		//- A splash page that disappears on .startButton click.
 		.splash
 			.headline
 				h1 Preakness 2016
@@ -61,7 +64,11 @@ html(class="no-js", lang="en")
 			.startButton
 				p Start
 					span.fa.fa-angle-right(data-dir="n")
+			//- This is an absolute-positioned div colored yellow and placed beneath the tophat.
 			.borderTrick
+		//- This overlay contains the left and right arrows which will be consistent for the whole of this page.
+		//- The overlay does not contain the horse names because I wanted the names to be able to slide in and out
+		//- of the area while the arrows remained static.
 		.namePlate#sticky
 			span.fa.fa-angle-left(data-dir="l")
 			span.fa.fa-angle-right(data-dir="r")
@@ -71,23 +78,30 @@ html(class="no-js", lang="en")
 				ul
 					- for (var i=0;i<72;i++) {
 						//- For every 8 elements, we create something different.
-						//- This is the first slide for each horse, featuring a near-fullscreen image
+						//- All of the content is pulled from content.jade, which holds a JSON file.
+						//- This is the first slide for each horse, featuring a near-fullscreen image.
 						- if (i<8) {
 							li(class="cell cell__name cell__name--#{i}")
 								.rank 
 								.rankText PP: #{i+1}
+								//- We recreate a "nameplate" for each horse
 								.namePlateText.namePlateText--center
-									//- The nameplate.jade file simply assigns h2 name tags for each horse. It is used for every slide.
 									h2 #{content[i%8].horse}
+								//- This jade file contains a div to create something like a slider position marker. 
+								//- This is also recreated over every cell. Inefficient, but necessary due to the
+								//- nature of the iScroll library.
 								include includes/slidepos.jade
 								.detailsPlate.arrow--down
 									p Details
+									//- The data attribute is used in the javascript to tell which direction
+									//- to scroll. Data attributes are used for cleaner javascript.
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 16) {
 							li(class="cell cell__odds")
 								.namePlateText.namePlateText--top
 									h2 #{content[i%8].horse}
 								include includes/slidepos.jade
+								//- This wrapper allows me to absolute-position elements to the middle.
 								.centerAlign
 									.contentBlock
 										h3 Odds
@@ -97,7 +111,7 @@ html(class="no-js", lang="en")
 												span #{content[i%8].oddsReturns}
 								.arrow.arrow--up
 									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Image
+									p.nextSlidePreview Horse
 								.arrow.arrow--down
 									p.nextSlidePreview Jockey
 									span.fa.fa-angle-down(data-dir="d")
@@ -109,9 +123,12 @@ html(class="no-js", lang="en")
 								.centerAlign
 									.contentBlock
 										h3 Jockey
+										//- The JSON contains booleans for if an image exists or not.
 										- if (content[i%8].jockeyImgBool) {
 											img(src="#{datalink}images/jockey#{i%8}.png")
 											p #{content[i%8].jockey}
+										//- If an image does not exist, a text-focused element is used.
+										//- This pattern occurs several more times below.
 										- } else {
 											.textBlock
 												p #{content[i%8].jockey}
