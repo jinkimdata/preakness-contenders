@@ -1634,29 +1634,33 @@ var preaknessContenders = {
     },
     share: function() {
         $(".icon-twitter").on("click", function() {
-            var tweet = "";
-            var url = "";
+            var tweet = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders";
+            var url = "http://data.baltimoresun.com/jin/preakness-contenders/";
             var twitter_url = "https://twitter.com/intent/tweet?text=" + tweet + "&url=" + url + "&tw_p=tweetbutton";
             window.open(twitter_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
         });
         $(".icon-facebook").on("click", function() {
             var picture = "";
-            var title = "";
-            var description = "";
-            var url = "";
+            var title = "Preakness 2016 Contenders";
+            var description = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders";
+            var url = "http://data.baltimoresun.com/jin/preakness-contenders/";
             var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link=" + url + "&picture=" + picture + "&name=" + title + "&description=" + description + "&redirect_uri=http://www.facebook.com";
             window.open(facebook_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
         });
     },
     scrollFunctions: function() {
+        $(".startButton").on("click touchend", function() {
+            $(".splash").fadeOut();
+            $(".hidden").removeClass("hidden");
+        });
         var myScroll = new IScroll("#contenders", {
             scrollX: true,
             scrollY: true,
             momentum: false,
             snap: true,
-            mouseWheel: true,
+            mouseWheel: false,
             disableMouse: true,
             probeType: 3,
             bounce: false
@@ -1730,7 +1734,7 @@ var preaknessContenders = {
                 myScroll.goToPage(myScroll.currentPage.pageX, 0);
             }, 50);
         });
-        $(".navBlock").on("click", function(e) {
+        $(".navBlock").on("click touchend", function(e) {
             var selected = $(this);
             var pos = Number(selected.attr("data-pos"));
             if (timer) {

@@ -14,7 +14,7 @@
     "build:html": "npm run jade",
     "build:css": "npm run sass",
     "build:js": "npm run uglify",
-    "build:images": "npm run imagemin && npm run icons",
+    "build:images": "npm run imagemin",
     "build:all": "npm run build:css && npm run build:js && npm run build:images",
     "watch:html": "onchange 'src/*.jade' -- npm run build:html",
     "watch:css": "onchange 'src/sass/*.sass' -- npm run build:css",

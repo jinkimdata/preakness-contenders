@@ -10,7 +10,8 @@ $bp-1: 600px
 $bp-2: 800px
 $bp-25: 1000px
 $bp-3: 1280px
-
+$bp-4: 1440px
+$bp-9: 1920px
 $base: $offblack
 
 $accent-g0: white
@@ -37,14 +38,16 @@ h1,h2,h3,h4,h5,h6
 	color: $accent-g0
 /* Tophat */
 #tophat
+	position: relative
 	height: 2em
 	background-color: $accent-g3
 	overflow: hidden
+	z-index: 3
 #logo
-	width: 17em
+	width: 13em
 	height: 100%
 	float: left
-	line-height: 2.5em
+	line-height: 2em
 	vertical-align: middle
 	img
 		margin: 0 1em
@@ -53,6 +56,8 @@ h1,h2,h3,h4,h5,h6
 	display: none
 	@media(min-width: $bp-25)
 		display: inline-block
+		&.hidden
+			display: none
 .navBlock
 	display: inline-block
 	padding: 1em .3em
@@ -62,8 +67,8 @@ h1,h2,h3,h4,h5,h6
 	color: $accent-g2
 	cursor: pointer
 	@media(min-width: $bp-3)
-		padding: .4em .4em
-		font-size: 1em
+		padding: .6em .4em
+		font-size: .8em
 	&.selected, &:hover
 		color: $accent-c0
 .tophat-share-tools
@@ -81,27 +86,77 @@ h1,h2,h3,h4,h5,h6
 		cursor: pointer
 		&:hover
 			color: $accent-c0
-.rank
-	position: relative
-	height: 2em
-	width: 4.5em
-	background: transparent
-	margin-left: 1em
-	color: $accent-g0
-	&:after
-	position: absolute
-	content: ''
-	top: 0
-	right: 0
-	border-style: solid
-	border-color: $accent-c0 transparent $accent-c0 transparent
-	border-width: 1.5em 0 0 1.5em
-.rankText
+.splash
 	position: absolute
 	top: 0
-	right: .5em
-	font-family: $text-1
+	left: 0
+	width: 100%
+	height: 100%
+	border-top: .2em solid $accent-c0
+	z-index: 2
+	background: no-repeat center center
+	-webkit-background-size: cover
+	-moz-background-size: cover
+	-o-background-size: cover
+	background-size: cover
+	background-image: url('../images/splashmd.jpg')
+	@media(min-width: $bp-1)
+		.headline
+			font-size: 1.3em	
+	@media(min-width: $bp-2)
+		background-image: url('../images/splashmd.jpg')
+		.headline
+			font-size: 1.4em
+	@media(min-width: $bp-3)
+		background-image: url('../images/splashlg.jpg')
+		.headline
+			font-size: 1.5em
+	@media(min-width: $bp-9)
+		background-image: url('../images/splash.jpg')
+.headline
+	position: absolute
+	top: 10%
+	width: 100%
+	padding: 0 1em
+	background-color: rgba(26,26,26,.8)
 	text-transform: uppercase
+	h1
+		font-size: 2.1em
+		line-height: .5em
+		color: $accent-c0
+	p
+		font-size: 1.3em
+		line-height: .5em
+		color: $accent-g0
+		font-family: $montserrat
+.startButton	
+	position: absolute
+	bottom: 0
+	width: 100%
+	padding: 0 2em
+	background-color: rgba(26,26,26,.8)
+	text-transform: uppercase
+	text-align: right
+	cursor: pointer
+	+transition(all .5s ease)
+	p
+		font-size: 2.5em
+		line-height: .5em
+		font-family: $montserrat
+		color: $accent-c0
+		span
+			margin-left: .5em
+			line-height: .5em
+	&:hover
+		background-color: rgba(249, 192, 57, .8)
+		p, span
+			color: $offblack
+.borderTrick
+	position: absolute
+	top: 0
+	width: 100%
+	height: 2em
+	background-color: $accent-c0
 .namePlate
 	position: absolute
 	top: 42%
@@ -121,12 +176,17 @@ h1,h2,h3,h4,h5,h6
 	&.stick
 		top: 2em
 		margin-top: 0
-.fa-angle-left
-	float: left
-	margin-left: .6em
-.fa-angle-right
-	float: right
-	margin-right: .6em
+	.fa-angle-left
+		float: left
+		margin-left: .6em
+		@media(min-width: $bp-4)
+			margin-left: 20%
+	.fa-angle-right
+		float: right
+		margin-right: .6em
+		@media(min-width: $bp-4)
+			margin-right: 20%
+
 #contenders
 	position: absolute
 	top: 2em
@@ -138,7 +198,7 @@ h1,h2,h3,h4,h5,h6
 #scroller 
 	position: absolute
 	width: 800%
-	height: 800%
+	height: 900%
 	-webkit-tap-highlight-color: rgba(0,0,0,0)
 	background-color: $base
 	-webkit-transform: translateZ(0)
@@ -167,7 +227,7 @@ ul
 	position: relative
 	display: block
 	width: 12.5%
-	height: 12.5%
+	height: 100px/9px * 1%
 	float: left
 	background-color: $base
 	font-size: 1em
@@ -209,6 +269,81 @@ ul
 		cursor: pointer
 		&.fa-angle-down
 			line-height: 0
+.namePlateText--center
+	position: absolute
+	top: 42%
+	width: 100%
+	height: 3.5em
+	background-color: rgba(26,26,26,.8)
+.detailsPlate
+	position: absolute
+	bottom: 0
+	width: 100%
+	height: 3em
+	background-color: rgba(26,26,26,.8)
+	text-align: center
+	p
+		margin: .2em 0 0 0
+	span
+		color: $accent-c0
+		font-size: 3em
+		line-height: .5em
+		cursor: pointer
+	@media(min-width: $bp-1)
+		height: 4em
+h2
+	display: inline-block
+	margin: .2em 0 0 0
+	font-size: 1.3em
+	font-weight: 300
+	color: $accent-c0
+	text-transform: uppercase
+.cell__name
+	position: relative
+	border-top: .2em solid $accent-c0
+	background: no-repeat center center
+	-webkit-background-size: cover
+	-moz-background-size: cover
+	-o-background-size: cover
+	background-size: cover
+	@for $i from 0 through 8
+		&--#{$i}
+			background-image: url('../images/#{$i%3}md.jpg')
+			@media(min-width: $bp-2)
+				background-image: url('../images/#{$i%3}md.jpg')
+			@media(min-width: $bp-3)
+				background-image: url('../images/#{$i%3}lg.jpg')
+			@media(min-width: $bp-9)
+				background-image: url('../images/#{$i%3}.jpg')
+	.slidePosition
+		top: 42%
+		padding-top: 1.8em
+.rank
+	position: relative
+	height: 2em
+	width: 4.5em
+	background: transparent
+	margin-left: 1em
+	color: $accent-g0
+	&:after
+	position: absolute
+	content: ''
+	top: 0
+	right: 0
+	border-style: solid
+	border-color: $accent-c0 transparent $accent-c0 transparent
+	border-width: 1.5em 0 0 1.5em
+.rankText
+	position: absolute
+	top: 0
+	right: .5em
+	font-family: $text-1
+	text-transform: uppercase
+.namePlateText--top
+	width: 100%
+	height: 3.5em
+	background-color: $base
+	border-bottom: .1em solid $accent-c0 
 h3
 	margin-bottom: .3em
 	font-size: 1.7em
@@ -246,103 +381,13 @@ h3
 		font-weight: 300
 		span
 			text-transform: uppercase
-.namePlateText--center
-	position: absolute
-	top: 42%
-	width: 100%
-	height: 3.5em
-	background-color: rgba(26,26,26,.8)
-	h2
-		display: inline-block
-		margin: .2em 0 0 0
-		font-size: 1.3em
-		font-weight: 300
-		text-transform: uppercase
-.detailsPlate
-	position: absolute
-	bottom: 0
-	width: 100%
-	height: 3em
-	background-color: rgba(26,26,26,.8)
-	text-align: center
-	cursor: pointer
-	p
-		margin: .2em 0 0 0
-	span
-		color: $accent-c0
-		font-size: 3em
-		line-height: .5em
-.namePlateText--top
-	width: 100%
-	height: 3.5em
-	background-color: $base
-	border-bottom: .1em solid $accent-c0 
-h2
-	display: inline-block
-	margin: .2em 0 0 0
-	font-size: 1.3em
-	font-weight: 300
-	color: $preakgold
-	text-transform: uppercase
-.cell__name
-	position: relative
-	border-top: .2em solid $accent-c0
-	background: no-repeat center center
-	-webkit-background-size: cover
-	-moz-background-size: cover
-	-o-background-size: cover
-	background-size: cover
-	&--0
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	&--1
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	&--2
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	&--3
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	&--4
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	&--5
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	&--6
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	&--7
-		background-image: url('../images/0sm.png')
-		@media(min-width: $bp-2)
-			background-image: url('../images/0md.png')
-		@media(min-width: $bp-3)
-			background-image: url('../images/0lg.png')
-	.slidePosition
-		top: 42%
-		padding-top: 1.8em
+.cell__odds
+	.contentBlock
+		.textBlock
+			p
+				span
+					font-family: $montserrat
+					text-transform: none
 .cell__notes
 	.contentBlock
 		.textBlock
@@ -352,7 +397,6 @@ h2
 				font-family: $text-0
 				font-size: 1.2em
 				background-color: transparent
-
 .backToTop
 	position: absolute
 	width: 100%

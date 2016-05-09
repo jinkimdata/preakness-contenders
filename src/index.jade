@@ -15,36 +15,33 @@ html(class="no-js", lang="en")
 	head
 		//Basic page needs
 		meta(charset="utf-8")
-		title
-		meta(name="description", content="")
-		meta(name="author", content="")
-
+		title Preakness 2016 Contenders
+		meta(name="description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders.")
+		meta(name="author", content="Jin Bae Kim")
 		//Mobile Specific Metas
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-
 		//Facebook Stuff
-		meta(property="og:title", content="")
-		meta(property="og:url", content="")
-		meta(property="og:image", content="")
+		meta(property="og:title", content="Preakness 2016 Contenders")
+		meta(property="og:url", content="#{datalink}")
+		meta(property="og:image", content="#{datalink}images/thumb.png")
 		meta(property="og:site_name", content="The Baltimore Sun")
-		meta(property="og:description", content="")
+		meta(property="og:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders")
 		meta(property="fb:app_id", content="310302989040998")
 		//Twitter Stuff
 		meta(name="twitter:card", content="summary")
 		meta(name="twitter:site", content="@baltimoresun")
-		meta(name="twitter:creator", content="")
-		meta(name="twitter:title", content="")
-		meta(name="twitter:description", content="")
-		meta(name="twitter:image", content="")
+		meta(name="twitter:creator", content="@baltsundata")
+		meta(name="twitter:title", content="Preakness 2016 Contenders")
+		meta(name="twitter:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders")
+		meta(name="twitter:image", content="#{datalink}images/thumb.png")
 		meta(name="twitter:domain", content="baltimoresun.com")
-
 	body
 		#tophat
 			.group
 			#logo
 				a(href="http://www.baltimoresun.com")
 					img(src="images/baltimore-sun-logo-white.png" border="0")
-			.nav
+			.nav.hidden
 				.navBlock.navBlock--0.selected(data-pos="0") Horse
 				.navBlock.navBlock--1(data-pos="1") Odds
 				.navBlock.navBlock--2(data-pos="2") Jockey
@@ -53,15 +50,24 @@ html(class="no-js", lang="en")
 				.navBlock.navBlock--5(data-pos="5") Breeder
 				.navBlock.navBlock--6(data-pos="6") Earnings
 				.navBlock.navBlock--7(data-pos="7") Notes
+				.navBlock.navBlock--8(data-pos="8") Prev Start
 			.tophat-share-tools
 				span.icon-facebook
 				span.icon-twitter
-		.overlay.namePlate#sticky
+		.splash
+			.headline
+				h1 Preakness 2016
+				p Contender Profiles
+			.startButton
+				p Start
+					span.fa.fa-angle-right
+			.borderTrick
+		.namePlate#sticky
 			span.fa.fa-angle-left
 			span.fa.fa-angle-right
 		#contenders
 			#scroller
-				//- Created 72 li elements. 
+				//- Create 72 li elements. 
 				ul
 					- for (var i=0;i<72;i++) {
 						//- For every 8 elements, we create something different.
@@ -88,7 +94,7 @@ html(class="no-js", lang="en")
 										.textBlock
 											p #{content[i%8].odds}
 												br
-												span (#{content[i%8].oddsReturns})
+												span #{content[i%8].oddsReturns}
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Image
@@ -209,14 +215,28 @@ html(class="no-js", lang="en")
 								.arrow.arrow--up
 									span.fa.fa-angle-up
 									p.nextSlidePreview Earnings
+								.arrow.arrow--down
+									p.nextSlidePreview Previous Start
+									span.fa.fa-angle-down
+						- } else if (i < 72) {
+							li(class="cell cell__prevStart")
+								.namePlateText.namePlateText--top
+									h2 #{content[i%8].horse}
+								include includes/slidepos.jade
+								.centerAlign
+									.contentBlock
+										h3 Previous Start
+										.textBlock
+											p #{content[i%8].prevStart}
+								.arrow.arrow--up
+									span.fa.fa-angle-up
+									p.nextSlidePreview Notes
 								.backToTop 
 									p Back to top
 						- }
 					- }
-
-		//- #leaderboard			
-		//- 	include includes/ad-for-body.html
-		
+		//- #leaderboard
+		//- 	include includes/ad-for-body.html		
 		//CSS
 		link(rel="stylesheet", type="text/css", href="#{datalink}css/style.css")
 		//Fonts
@@ -227,7 +247,6 @@ html(class="no-js", lang="en")
 		//- script(src="#{datalink}js/app.js")
 		script(src="#{datalink}js/min/jquery-1.10.2.min.js")
 		script(src="#{datalink}js/min/app.min.js")
-
-		//- include includes/omniture.html
+		include includes/omniture.html
 		//- include includes/ad-for-header.html
 	
