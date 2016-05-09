@@ -23,7 +23,7 @@ html(class="no-js", lang="en")
 		//Facebook Stuff
 		meta(property="og:title", content="Preakness 2016 Contenders")
 		meta(property="og:url", content="#{datalink}")
-		meta(property="og:image", content="#{datalink}images/thumb.png")
+		meta(property="og:image", content="#{datalink}images/thumb.jpg")
 		meta(property="og:site_name", content="The Baltimore Sun")
 		meta(property="og:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders")
 		meta(property="fb:app_id", content="310302989040998")
@@ -33,7 +33,7 @@ html(class="no-js", lang="en")
 		meta(name="twitter:creator", content="@baltsundata")
 		meta(name="twitter:title", content="Preakness 2016 Contenders")
 		meta(name="twitter:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders")
-		meta(name="twitter:image", content="#{datalink}images/thumb.png")
+		meta(name="twitter:image", content="#{datalink}images/thumb.jpg")
 		meta(name="twitter:domain", content="baltimoresun.com")
 	body
 		#tophat
@@ -50,7 +50,7 @@ html(class="no-js", lang="en")
 				.navBlock.navBlock--5(data-pos="5") Breeder
 				.navBlock.navBlock--6(data-pos="6") Earnings
 				.navBlock.navBlock--7(data-pos="7") Notes
-				.navBlock.navBlock--8(data-pos="8") Prev Start
+				.navBlock.navBlock--8(data-pos="8") Previous Start
 			.tophat-share-tools
 				span.icon-facebook
 				span.icon-twitter
@@ -60,11 +60,11 @@ html(class="no-js", lang="en")
 				p Contender Profiles
 			.startButton
 				p Start
-					span.fa.fa-angle-right
+					span.fa.fa-angle-right(data-dir="n")
 			.borderTrick
 		.namePlate#sticky
-			span.fa.fa-angle-left
-			span.fa.fa-angle-right
+			span.fa.fa-angle-left(data-dir="l")
+			span.fa.fa-angle-right(data-dir="r")
 		#contenders
 			#scroller
 				//- Create 72 li elements. 
@@ -82,7 +82,7 @@ html(class="no-js", lang="en")
 								include includes/slidepos.jade
 								.detailsPlate.arrow--down
 									p Details
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 16) {
 							li(class="cell cell__odds")
 								.namePlateText.namePlateText--top
@@ -96,11 +96,11 @@ html(class="no-js", lang="en")
 												br
 												span #{content[i%8].oddsReturns}
 								.arrow.arrow--up
-									span.fa.fa-angle-up
+									span.fa.fa-angle-up(data-dir="u")
 									p.nextSlidePreview Image
 								.arrow.arrow--down
 									p.nextSlidePreview Jockey
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 24) {
 							li(class="cell cell__jockey")
 								.namePlateText.namePlateText--top
@@ -117,11 +117,11 @@ html(class="no-js", lang="en")
 												p #{content[i%8].jockey}
 										- }
 								.arrow.arrow--up
-									span.fa.fa-angle-up 
+									span.fa.fa-angle-up(data-dir="u") 
 									p.nextSlidePreview Odds
 								.arrow.arrow--down
 									p.nextSlidePreview Trainer
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 32) {
 							li(class="cell cell__trainer")
 								.namePlateText.namePlateText--top
@@ -138,11 +138,11 @@ html(class="no-js", lang="en")
 												p #{content[i%8].trainer}
 										- }
 								.arrow.arrow--up
-									span.fa.fa-angle-up
+									span.fa.fa-angle-up(data-dir="u")
 									p.nextSlidePreview Jockey
 								.arrow.arrow--down
 									p.nextSlidePreview Owner
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 40) {
 							li(class="cell cell__owner")
 								.namePlateText.namePlateText--top
@@ -159,11 +159,11 @@ html(class="no-js", lang="en")
 												p #{content[i%8].owner}
 										- }
 								.arrow.arrow--up
-									span.fa.fa-angle-up
+									span.fa.fa-angle-up(data-dir="u")
 									p.nextSlidePreview Trainer
 								.arrow.arrow--down
 									p.nextSlidePreview Breeder
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 48) {
 							li(class="cell cell__breeder")
 								.namePlateText.namePlateText--top
@@ -180,11 +180,11 @@ html(class="no-js", lang="en")
 												p #{content[i%8].breeder}
 										- }
 								.arrow.arrow--up
-									span.fa.fa-angle-up
+									span.fa.fa-angle-up(data-dir="u")
 									p.nextSlidePreview Owner
 								.arrow.arrow--down
 									p.nextSlidePreview Earnings
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 56) {
 							li(class="cell cell__earnings")
 								.namePlateText.namePlateText--top
@@ -196,11 +196,11 @@ html(class="no-js", lang="en")
 										.textBlock
 											p #{content[i%8].earnings}
 								.arrow.arrow--up
-									span.fa.fa-angle-up
+									span.fa.fa-angle-up(data-dir="u")
 									p.nextSlidePreview Breeder
 								.arrow.arrow--down
 									p.nextSlidePreview Notes
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 64) {
 							li(class="cell cell__notes")
 								.namePlateText.namePlateText--top
@@ -213,11 +213,11 @@ html(class="no-js", lang="en")
 											p #{content[i%8].notes1}
 											p #{content[i%8].notes2}
 								.arrow.arrow--up
-									span.fa.fa-angle-up
+									span.fa.fa-angle-up(data-dir="u")
 									p.nextSlidePreview Earnings
 								.arrow.arrow--down
 									p.nextSlidePreview Previous Start
-									span.fa.fa-angle-down
+									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 72) {
 							li(class="cell cell__prevStart")
 								.namePlateText.namePlateText--top
@@ -229,7 +229,7 @@ html(class="no-js", lang="en")
 										.textBlock
 											p #{content[i%8].prevStart}
 								.arrow.arrow--up
-									span.fa.fa-angle-up
+									span.fa.fa-angle-up(data-dir="u")
 									p.nextSlidePreview Notes
 								.backToTop 
 									p Back to top

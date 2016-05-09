@@ -1630,6 +1630,7 @@
 
 var preaknessContenders = {
     init: function() {
+        preaknessContenders.share();
         preaknessContenders.scrollFunctions();
     },
     share: function() {
@@ -1644,7 +1645,7 @@ var preaknessContenders = {
             var picture = "";
             var title = "Preakness 2016 Contenders";
             var description = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders";
-            var url = "http://data.baltimoresun.com/jin/preakness-contenders/";
+            var url = "http://data.baltimoresun.com/jin/preakness-contenders/images/thumb.jpg";
             var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link=" + url + "&picture=" + picture + "&name=" + title + "&description=" + description + "&redirect_uri=http://www.facebook.com";
             window.open(facebook_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
@@ -1674,8 +1675,10 @@ var preaknessContenders = {
                 clearTimeout(timer);
             }
             timer = setTimeout(function() {
-                sticky_relocate();
-            }, 100);
+                if (myScroll.currentPage.pageY < 2) {
+                    sticky_relocate();
+                }
+            }, 50);
         });
         function sticky_relocate() {
             if (myScroll.currentPage.pageY > 0) {
@@ -1686,44 +1689,42 @@ var preaknessContenders = {
                 $("#sticky-anchor").height(0);
             }
         }
-        $(".fa-angle-left").on("click touchend", function(e) {
+        $(".fa").on("click touchend", function(e) {
+            var dir = $(this).attr("data-dir");
             if (timer) {
                 clearTimeout(timer);
             }
             timer = setTimeout(function() {
-                if (myScroll.currentPage.pageX > 0) {
-                    myScroll.prev();
-                } else if (myScroll.currentPage.pageX == 0) {
-                    myScroll.goToPage(7, myScroll.currentPage.pageY);
+                switch (dir) {
+                  case "u":
+                    myScroll.goToPage(myScroll.currentPage.pageX, myScroll.currentPage.pageY - 1);
+                    break;
+
+                  case "d":
+                    myScroll.goToPage(myScroll.currentPage.pageX, myScroll.currentPage.pageY + 1);
+                    break;
+
+                  case "l":
+                    if (myScroll.currentPage.pageX > 0) {
+                        myScroll.prev();
+                    } else if (myScroll.currentPage.pageX == 0) {
+                        myScroll.goToPage(7, myScroll.currentPage.pageY);
+                    }
+                    ;
+                    break;
+
+                  case "r":
+                    if (myScroll.currentPage.pageX < 7) {
+                        myScroll.next();
+                    } else if (myScroll.currentPage.pageX == 7) {
+                        myScroll.goToPage(0, myScroll.currentPage.pageY);
+                    }
+                    ;
+                    break;
+
+                  default:
+                    break;
                 }
-            }, 50);
-        });
-        $(".fa-angle-right").on("click touchend", function(e) {
-            if (timer) {
-                clearTimeout(timer);
-            }
-            timer = setTimeout(function() {
-                if (myScroll.currentPage.pageX < 7) {
-                    myScroll.next();
-                } else if (myScroll.currentPage.pageX == 7) {
-                    myScroll.goToPage(0, myScroll.currentPage.pageY);
-                }
-            }, 50);
-        });
-        $(".fa-angle-up").on("click touchend", function(e) {
-            if (timer) {
-                clearTimeout(timer);
-            }
-            timer = setTimeout(function() {
-                myScroll.goToPage(myScroll.currentPage.pageX, myScroll.currentPage.pageY - 1);
-            }, 50);
-        });
-        $(".fa-angle-down").on("click touchend", function(e) {
-            if (timer) {
-                clearTimeout(timer);
-            }
-            timer = setTimeout(function() {
-                myScroll.goToPage(myScroll.currentPage.pageX, myScroll.currentPage.pageY + 1);
             }, 50);
         });
         $(".backToTop").on("click touchend", function(e) {
@@ -1735,8 +1736,7 @@ var preaknessContenders = {
             }, 50);
         });
         $(".navBlock").on("click touchend", function(e) {
-            var selected = $(this);
-            var pos = Number(selected.attr("data-pos"));
+            var pos = Number($(this).attr("data-pos"));
             if (timer) {
                 clearTimeout(timer);
             }
