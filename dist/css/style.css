@@ -501,7 +501,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navBlock {
   display: inline-block;
-  padding: 1em .3em;
+  padding: 1em .5em;
   font-family: "Montserrat", sans-serif;
   font-size: .6em;
   text-transform: uppercase;
@@ -509,7 +509,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer; }
   @media (min-width: 1280px) {
     .navBlock {
-      padding: .6em .4em;
+      padding: .6em .5em;
       font-size: .8em; } }
   .navBlock.selected, .navBlock:hover {
     color: #f9c039; }
