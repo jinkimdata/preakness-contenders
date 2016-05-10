@@ -41,8 +41,7 @@ html(class="no-js", lang="en")
 			#logo
 				a(href="http://www.baltimoresun.com")
 					img(src="images/baltimore-sun-logo-white.png" border="0")
-			//- This hidden class is removed when the splash page disappears. It is written this way and not in 
-			//- jQuery (.nav.fadeIn()) in order to accomodate for media queries.
+			//- This hidden class is removed when the splash page disappears. It is written this way and not in  jQuery (fadeIn()) in order to accomodate for media queries.
 			.nav.hidden
 				.navBlock.navBlock--0.selected(data-pos="0") Horse
 				.navBlock.navBlock--1(data-pos="1") Odds
@@ -66,43 +65,47 @@ html(class="no-js", lang="en")
 					span.fa.fa-angle-right(data-dir="n")
 			//- This is an absolute-positioned div colored yellow and placed beneath the tophat.
 			.borderTrick
-		//- This overlay contains the left and right arrows which will be consistent for the whole of this page.
-		//- The overlay does not contain the horse names because I wanted the names to be able to slide in and out
-		//- of the area while the arrows remained static.
-		.namePlate#sticky
+		//- This overlay contains the left and right arrows and the horse name. It will be present on every page except the "card" pages.
+		.namePlate.stickable
 			span.fa.fa-angle-left(data-dir="l")
+			.cAlign
+				h2#horseName American Pharaoh
+				.slidePosition
+					span.fa.fa-circle.fa-circle--0.posMarker
+					span.fa.fa-circle.fa-circle--1
+					span.fa.fa-circle.fa-circle--2
+					span.fa.fa-circle.fa-circle--3
+					span.fa.fa-circle.fa-circle--4
+					span.fa.fa-circle.fa-circle--5
+					span.fa.fa-circle.fa-circle--6
+					span.fa.fa-circle.fa-circle--7
 			span.fa.fa-angle-right(data-dir="r")
 		#contenders
 			#scroller
 				//- Create 72 li elements. 
 				ul
 					- for (var i=0;i<72;i++) {
-						//- For every 8 elements, we create something different.
-						//- All of the content is pulled from content.jade, which holds a JSON file.
-						//- This is the first slide for each horse, featuring a near-fullscreen image.
+						//- For every 8 elements, we create something different. All of the content is pulled from content.jade, which holds a JSON file. This is the first slide for each horse, featuring a near-fullscreen image.
 						- if (i<8) {
 							li(class="cell cell__name cell__name--#{i}")
 								.rank 
 								.rankText PP: #{i+1}
 								//- We recreate a "nameplate" for each horse
-								.namePlateText.namePlateText--center
-									h2 #{content[i%8].horse}
-								//- This jade file contains a div to create something like a slider position marker. 
-								//- This is also recreated over every cell. Inefficient, but necessary due to the
-								//- nature of the iScroll library.
-								include includes/slidepos.jade
+								.namePlate
+									span.fa.fa-angle-left(data-dir="l")
+									.cAlign
+										h2 #{content[i%8].horse}
+										//- This jade file contains a div to create something like a slider position marker. This is also recreated over every cell. Inefficient, but necessary due to the nature of the iScroll library.
+										include includes/slidepos.jade
+									span.fa.fa-angle-right(data-dir="r")
 								.detailsPlate.arrow--down
 									p Details
-									//- The data attribute is used in the javascript to tell which direction
-									//- to scroll. Data attributes are used for cleaner javascript.
+									//- The data attribute is used in the javascript to tell which direction to scroll. Data attributes are used for cleaner javascript.
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 16) {
 							li(class="cell cell__odds")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								//- This wrapper allows me to absolute-position elements to the middle.
-								.centerAlign
+								//- Vertical align wrapper.
+								.vAlign
 									.contentBlock
 										h3 Odds
 										.textBlock
@@ -117,10 +120,7 @@ html(class="no-js", lang="en")
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 24) {
 							li(class="cell cell__jockey")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
+								.vAlign
 									.contentBlock
 										h3 Jockey
 										//- The JSON contains booleans for if an image exists or not.
@@ -141,10 +141,7 @@ html(class="no-js", lang="en")
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 32) {
 							li(class="cell cell__trainer")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
+								.vAlign
 									.contentBlock
 										h3 Trainer
 										- if (content[i%8].trainerImgBool) {
@@ -162,10 +159,7 @@ html(class="no-js", lang="en")
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 40) {
 							li(class="cell cell__owner")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
+								.vAlign
 									.contentBlock
 										h3 Owner
 										- if (content[i%8].ownerImgBool) {
@@ -183,10 +177,7 @@ html(class="no-js", lang="en")
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 48) {
 							li(class="cell cell__breeder")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
+								.vAlign
 									.contentBlock
 										h3 Breeder
 										- if (content[i%8].breederImgBool) {
@@ -204,10 +195,7 @@ html(class="no-js", lang="en")
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 56) {
 							li(class="cell cell__earnings")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
+								.vAlign
 									.contentBlock
 										h3 Earnings
 										.textBlock
@@ -220,10 +208,7 @@ html(class="no-js", lang="en")
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 64) {
 							li(class="cell cell__notes")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
+								.vAlign
 									.contentBlock
 										h3 Notes
 										.textBlock
@@ -237,10 +222,7 @@ html(class="no-js", lang="en")
 									span.fa.fa-angle-down(data-dir="d")
 						- } else if (i < 72) {
 							li(class="cell cell__prevStart")
-								.namePlateText.namePlateText--top
-									h2 #{content[i%8].horse}
-								include includes/slidepos.jade
-								.centerAlign
+								.vAlign
 									.contentBlock
 										h3 Previous Start
 										.textBlock

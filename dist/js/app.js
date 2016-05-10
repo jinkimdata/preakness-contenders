@@ -1670,25 +1670,29 @@ var preaknessContenders = {
             e.preventDefault();
         }, false);
         var timer;
+        var xPos = 0;
+        var horseNames = [ "American Pharaoh", "Dortmund", "Mr. Z", "Danzig Moon", "Tale of Verve", "Bodhisattva", "Divining Rod", "Firing Line" ];
         myScroll.on("scroll", function() {
             if (timer) {
                 clearTimeout(timer);
             }
             timer = setTimeout(function() {
-                if (myScroll.currentPage.pageY < 2) {
-                    sticky_relocate();
+                if (myScroll.currentPage.pageY != 0) {
+                    $(".stickable").fadeIn("fast");
+                } else {
+                    $(".stickable").fadeOut("fast");
+                }
+                if (myScroll.currentPage.pageX != xPos) {
+                    xPos = myScroll.currentPage.pageX;
+                    $(".posMarker").removeClass("posMarker");
+                    $(".fa-circle--" + xPos).addClass("posMarker");
+                    $("#horseName").fadeOut("fast", function() {
+                        $("#horseName").text(horseNames[xPos]);
+                    });
+                    $("#horseName").fadeIn("fast");
                 }
             }, 50);
         });
-        function sticky_relocate() {
-            if (myScroll.currentPage.pageY > 0) {
-                $("#sticky").addClass("stick");
-                $("#sticky-anchor").height($("#sticky").outerHeight());
-            } else {
-                $("#sticky").removeClass("stick");
-                $("#sticky-anchor").height(0);
-            }
-        }
         $(".fa").on("click touchend", function(e) {
             var dir = $(this).attr("data-dir");
             if (timer) {

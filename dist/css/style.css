@@ -625,15 +625,10 @@ h1, h2, h3, h4, h5, h6 {
   .namePlate span {
     cursor: pointer;
     font-size: 3em;
+    line-height: 1.2em;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
     transition: all 0.2s ease; }
-    .namePlate span.fade {
-      color: #acacac;
-      cursor: default; }
-  .namePlate.stick {
-    top: 2em;
-    margin-top: 0; }
   .namePlate .fa-angle-left {
     float: left;
     margin-left: .6em; }
@@ -646,6 +641,25 @@ h1, h2, h3, h4, h5, h6 {
     @media (min-width: 1440px) {
       .namePlate .fa-angle-right {
         margin-right: 20%; } }
+
+.cAlign {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  text-align: center;
+  background-color: rgba(26, 26, 26, 0.8);
+  z-index: -1; }
+
+.stickable {
+  display: none;
+  top: 2em;
+  margin-top: 0; }
+  .stickable.stick {
+    display: block; }
+  .stickable .cAlign {
+    border-bottom: 0.1em solid #f9c039; }
 
 #contenders {
   position: absolute;
@@ -712,7 +726,7 @@ ul {
   position: absolute;
   width: 100%; }
   .arrow--up {
-    top: 3em;
+    top: 4em;
     left: 0; }
   .arrow--down {
     bottom: 0;
@@ -867,9 +881,6 @@ h2 {
     @media (min-width: 1920px) {
       .cell__name--8 {
         background-image: url("../images/2.jpg"); } }
-  .cell__name .slidePosition {
-    top: 42%;
-    padding-top: 1.8em; }
 
 .rank {
   position: relative;
@@ -905,7 +916,7 @@ h3 {
   font-weight: 300;
   text-transform: uppercase; }
 
-.centerAlign {
+.vAlign {
   position: absolute;
   top: 0;
   left: 0;

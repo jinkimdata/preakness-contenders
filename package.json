@@ -20,7 +20,10 @@
     "watch:css": "onchange 'src/sass/*.sass' -- npm run build:css",
     "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
     "watch:server": "onchange 'dist/**' -- npm run reload",
-    "watch:all": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run watch:server'"
+    "watch:all": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run watch:server'",
+    "jademin": "jade -p src/index.jade < src/index.jade > dist/index.html",
+    "sassmin": "node-sass --output-style compressed -o dist/css src/sass", 
+    "build:min": "npm run jademin && npm run sassmin"
   },
   "repository": {
     "type": "git",

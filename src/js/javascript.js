@@ -43,6 +43,8 @@ var preaknessContenders = {
 		}, false);
 		// The timer puts on a cap on the number of times functions trigger. It is used repeatedly through this code.
 		var timer;
+		var xPos = 0;
+		var horseNames = ['American Pharaoh', 'Dortmund', 'Mr. Z', 'Danzig Moon', 'Tale of Verve', 'Bodhisattva', 'Divining Rod','Firing Line'];
 		myScroll.on('scroll',function(){
 			// It works by checking if a "timer" exists. If it does, nothing happens.
 			if (timer) {
@@ -50,21 +52,22 @@ var preaknessContenders = {
 			};
 			// What is a timer? It's just a function that triggers after a delay.
 			timer = setTimeout(function() {
-				if (myScroll.currentPage.pageY < 2) {
-					sticky_relocate();
-				}
+				if (myScroll.currentPage.pageY != 0) {
+					$('.stickable').fadeIn('fast');
+				} else {
+					$('.stickable').fadeOut('fast');
+				};
+				if (myScroll.currentPage.pageX != xPos) {
+					xPos = myScroll.currentPage.pageX;
+					$('.posMarker').removeClass('posMarker');
+					$('.fa-circle--'+xPos).addClass('posMarker');
+					$('#horseName').fadeOut('fast', function (){
+						$('#horseName').text(horseNames[xPos]);
+					});
+					$('#horseName').fadeIn('fast');
+				};
 			}, 50);
 		});
-		// This moves the left and right arrows that overlay on the page from the center to the top.
-		function sticky_relocate() {
-			if (myScroll.currentPage.pageY > 0) {
-				$('#sticky').addClass('stick');
-				$('#sticky-anchor').height($('#sticky').outerHeight());
-			} else {				
-				$('#sticky').removeClass('stick');
-				$('#sticky-anchor').height(0);
-			};
-		};
 		// All other button functions are below.
 		//
 		// These are for the arrows. It pulls the data-dir attribute to see what direction to move the page.
