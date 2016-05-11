@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"stic",
+				"stickable"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"sc",
+				"screenHeight"
+			],
+			[
+				"scre",
+				"screenWidth"
+			],
+			[
+				"scroll",
+				"scrollFunctions"
+			],
+			[
+				"backgrou",
+				"background-color"
+			],
+			[
+				"span",
+				"column-span"
+			],
+			[
+				"nameplate",
+				"namePlateText"
+			],
+			[
 				"margin",
 				"margin-top"
 			],
@@ -47,23 +83,23 @@
 			"file": "src/index.jade",
 			"settings":
 			{
-				"buffer_size": 4154,
+				"buffer_size": 9370,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/includes/nameplate.jade",
+			"file": "src/includes/slidepos.jade",
 			"settings":
 			{
-				"buffer_size": 257,
+				"buffer_size": 2358,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dist/index.html",
+			"file": "src/includes/content.jade",
 			"settings":
 			{
-				"buffer_size": 17057,
+				"buffer_size": 4383,
 				"line_ending": "Unix"
 			}
 		},
@@ -71,7 +107,7 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 1980,
+				"buffer_size": 2155,
 				"line_ending": "Unix"
 			}
 		},
@@ -87,7 +123,7 @@
 			"file": "src/js/javascript.js",
 			"settings":
 			{
-				"buffer_size": 2465,
+				"buffer_size": 4886,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,7 +139,7 @@
 			"file": "src/sass/style.sass",
 			"settings":
 			{
-				"buffer_size": 3422,
+				"buffer_size": 8084,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,7 +147,7 @@
 			"file": "src/sass/_variables.sass",
 			"settings":
 			{
-				"buffer_size": 213,
+				"buffer_size": 233,
 				"line_ending": "Unix"
 			}
 		},
@@ -179,6 +215,8 @@
 	[
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/css",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/fonts",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/js",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/js/min",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src",
@@ -188,6 +226,12 @@
 	],
 	"file_history":
 	[
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/package.json",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/css/style.css",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/index.html",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src/includes/omniture.html",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src/includes/nameplate.jade",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src/sass/_normalize.scss",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src/includes/mixins.jade",
 		"/Users/jikim/Downloads/iscroll-master/build/iscroll-probe.js",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src/js/iscroll.js",
@@ -195,7 +239,6 @@
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/js/app.js",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/.gitignore",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/gitignore.txt",
-		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/package.json",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/dollars-per-vote/dollars-per-vote.sublime-project",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/src/sass/style.sass",
 		"/Users/jikim/Documents/bsun/online/package.json",
@@ -247,43 +290,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"+nameplate",
+			"style",
+			".namePlateText.namePlateText--top\n								// 	h2 #{content[i%8].horse}\n								// include includes/slidepos.jade",
+			"slidepos",
+			"stick",
 			"nameplate",
-			"nameplate(top",
-			"include includes/nameplate",
-			".namePlateText.namePlateText--top",
-			"case i%8\n										when 0\n											h2 American Pharaoh\n										when 1\n											h2 Dortmund\n										when 2\n											h2 Mr. Z\n										when 3\n											h2 Danzig Moon\n										when 4\n											h2 Tale of Verve\n										when 5\n											h2 Bodhisattva\n										when 6\n											h2 Diving Rod\n										when 7\n											h2 Firing Line",
-			"case i%8",
-			"case i",
-			"#{i-",
-			"i-",
-			"#{i-8}",
-			"case i",
+			"offblack",
+			".centerAlign",
+			"centerAlign",
+			".namePlateText.namePlateText--top\n									h2 #{content[i%8].horse}",
+			".namePlateText.namePlateText--center\n									h2 #{content[i%8].horse}",
+			"include includes/slidepos.jade",
+			"slidepos",
+			"fa",
+			"fa-angle-left",
+			"fa-angle-right",
+			"fa-angle-up",
+			"fa-angle-down",
+			"x = this",
+			"next",
+			"bp-3",
+			"false",
+			"true",
+			"png",
+			"rgba",
+			"preakgold",
+			"white",
+			"darkgray",
+			"lightgray",
+			"offblack",
+			"z-index",
+			"},",
+			"false",
+			"true",
+			"0sm",
+			"var slidePos = getSlidePos()",
+			"slidePos[1]",
+			"slidePos[0]",
+			"');\n",
+			"selected",
+			"currentpage",
+			"currentPAge",
+			"gotopage",
+			"goToPage",
+			"wheel",
+			".fa-angle-right",
+			"navBlock--'+slidePos[1]",
+			"myScroll.goToPage",
+			".navBlock",
+			"navBlock",
+			"bp1",
+			"bp2",
+			"bp3",
+			"text1",
+			"text0",
+			"accentc0",
+			"navBlock",
+			"$accent-g0",
+			"accent-g1",
+			"accent-g2",
+			"accent-g1",
+			"h3",
+			"span.fa.fa-angle-up\n									p.nextSlidePreview",
+			"h3",
+			"fa.fa-angle-up\n									p.nextSlidePreview",
+			"h3",
+			"arrow--up\n									span.fa.fa-angle-up",
+			"h3 ",
+			"down\n									p.nextSlidePreview",
+			"h3 ",
+			"down\n									p.nextSlidePreview",
+			"nextSlidePreview",
+			"h3",
+			"accent-g3",
+			"accent-g2",
+			"accent-g1",
+			"accent-g0",
+			"accentg3",
+			"accentg2",
+			"accentg1",
+			"accentg0",
+			"darkgray",
+			"white",
+			"accentg1",
+			"white",
+			"offblack",
+			"lightgray",
+			"headerText",
+			"text1",
+			"headerText",
+			"smallText",
+			"montserrat",
+			"majorText",
+			"minorText",
+			"$lato",
+			"lato",
+			"preakgold",
+			"images/0md.png",
+			"('../images/0lg.png')",
+			" no-repeat center center fixed",
+			"jpg",
+			"0smlg",
+			"images/",
+			"	e.preventDefault();\n				return;\n			};",
+			"if (myScroll.moved) {\n				e.preventDefault();\n				return;\n			};",
+			" (myScroll.moved) {\n			// 	e.preventDefault();\n			// 	return;\n			// };",
+			"if (myScroll.moved) {\n				e.preventDefault();\n				return;\n			};",
+			"click touchend",
+			"keybind",
+			"blue",
+			".posMarker",
+			"arrow",
+			".arrow.arrow--down",
+			".arrow.arrow--up\n									span.fa.fa-angle-up",
+			"include includes/nameplate.jade",
+			"px",
+			"--#{i%8}",
+			"png",
+			"scrollFuntions",
+			"jpg",
+			"}.png",
+			"include includes/nameplate.jade",
+			"false",
+			"true",
+			"FALSE",
+			"TRUE",
 			"when",
-			"when 7",
-			"namePlateText",
-			"scrollTo",
-			";",
-			"pointer",
-			"i-",
-			"ell cel",
-			"cell cell__",
-			"Cell #{i}",
-			"jockey",
-			";",
-			"dataproject",
-			"PROJ-NAME-HERE",
-			"zoom",
-			"mobileF",
-			"50,",
-			"50",
-			"javascript",
-			"datalink}scripts",
-			"stylesheets",
-			"../../../../../Documents/bsun/online/md-shootings-near-you",
-			"107.23",
-			"ftp",
-			"environment"
+			"true",
+			"imgBool"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -319,24 +453,25 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4154,
+						"buffer_size": 9370,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1877,
-								1878
+								8807,
+								8812
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 787.0,
+						"translation.y": 2647.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -344,25 +479,57 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/includes/nameplate.jade",
+					"file": "src/includes/slidepos.jade",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 257,
+						"buffer_size": 2358,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								33,
-								33
+								24,
+								24
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/includes/content.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4383,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								175,
+								175
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -372,12 +539,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "dist/index.html",
+					"buffer": 3,
+					"file": "package.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17057,
+						"buffer_size": 2155,
 						"regions":
 						{
 						},
@@ -390,36 +557,6 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1980,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								199,
-								199
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -428,7 +565,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -450,13 +587,14 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -471,24 +609,25 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2465,
+						"buffer_size": 4886,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1530,
-								1530
+								2485,
+								2485
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 386.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
@@ -497,7 +636,7 @@
 				{
 					"buffer": 6,
 					"file": "src/js/iscroll-probe.js",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 54249,
@@ -507,17 +646,18 @@
 						"selection":
 						[
 							[
-								53750,
-								53750
+								9282,
+								9290
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 13859.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
@@ -529,27 +669,28 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3422,
+						"buffer_size": 8084,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2104,
-								2104
+								1148,
+								1148
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1417.0,
+						"translation.y": 550.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -558,19 +699,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 213,
+						"buffer_size": 233,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								127,
-								70
+								141,
+								147
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -599,6 +741,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},

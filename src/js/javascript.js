@@ -44,6 +44,7 @@ var preaknessContenders = {
 		// The timer puts on a cap on the number of times functions trigger. It is used repeatedly through this code.
 		var timer;
 		var xPos = 0;
+		var yPos = 0;
 		var horseNames = ['American Pharaoh', 'Dortmund', 'Mr. Z', 'Danzig Moon', 'Tale of Verve', 'Bodhisattva', 'Divining Rod','Firing Line'];
 		myScroll.on('scroll',function(){
 			// It works by checking if a "timer" exists. If it does, nothing happens.
@@ -52,21 +53,28 @@ var preaknessContenders = {
 			};
 			// What is a timer? It's just a function that triggers after a delay.
 			timer = setTimeout(function() {
-				if (myScroll.currentPage.pageY != 0) {
-					$('.stickable').fadeIn('fast');
-				} else {
-					$('.stickable').fadeOut('fast');
+				newYPos = myScroll.currentPage.pageY;
+				newXPos = myScroll.currentPage.pageX;
+				if (yPos != newYPos) {				
+					yPos = newYPos;
+					if (yPos != 0) {
+						$('.stickable').fadeIn('slow');
+					} else {
+						$('.stickable').fadeOut('fast');
+					};
+					$('.selected').removeClass('selected');
+					$('.navBlock--'+yPos).addClass('selected');
 				};
-				if (myScroll.currentPage.pageX != xPos) {
-					xPos = myScroll.currentPage.pageX;
+				if (xPos != newXPos) {
+					xPos = newXPos;
 					$('.posMarker').removeClass('posMarker');
 					$('.fa-circle--'+xPos).addClass('posMarker');
 					$('#horseName').fadeOut('fast', function (){
 						$('#horseName').text(horseNames[xPos]);
+						$('#horseName').fadeIn('fast');
 					});
-					$('#horseName').fadeIn('fast');
 				};
-			}, 50);
+			}, 10);
 		});
 		// All other button functions are below.
 		//
@@ -121,11 +129,6 @@ var preaknessContenders = {
 			timer = setTimeout(function(){
 				myScroll.goToPage(myScroll.currentPage.pageX, pos);
 			}, 50);
-		});
-		// At the end of every scroll event, update the navbar to highlight the appropraite page.
-		myScroll.on('scrollEnd',function(){			
-			$('.selected').removeClass('selected');
-			$('.navBlock--'+myScroll.currentPage.pageY).addClass('selected');
 		});
 	}
 }

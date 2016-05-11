@@ -1671,27 +1671,35 @@ var preaknessContenders = {
         }, false);
         var timer;
         var xPos = 0;
+        var yPos = 0;
         var horseNames = [ "American Pharaoh", "Dortmund", "Mr. Z", "Danzig Moon", "Tale of Verve", "Bodhisattva", "Divining Rod", "Firing Line" ];
         myScroll.on("scroll", function() {
             if (timer) {
                 clearTimeout(timer);
             }
             timer = setTimeout(function() {
-                if (myScroll.currentPage.pageY != 0) {
-                    $(".stickable").fadeIn("fast");
-                } else {
-                    $(".stickable").fadeOut("fast");
+                newYPos = myScroll.currentPage.pageY;
+                newXPos = myScroll.currentPage.pageX;
+                if (yPos != newYPos) {
+                    yPos = newYPos;
+                    if (yPos != 0) {
+                        $(".stickable").fadeIn("slow");
+                    } else {
+                        $(".stickable").fadeOut("fast");
+                    }
+                    $(".selected").removeClass("selected");
+                    $(".navBlock--" + yPos).addClass("selected");
                 }
-                if (myScroll.currentPage.pageX != xPos) {
-                    xPos = myScroll.currentPage.pageX;
+                if (xPos != newXPos) {
+                    xPos = newXPos;
                     $(".posMarker").removeClass("posMarker");
                     $(".fa-circle--" + xPos).addClass("posMarker");
                     $("#horseName").fadeOut("fast", function() {
                         $("#horseName").text(horseNames[xPos]);
+                        $("#horseName").fadeIn("fast");
                     });
-                    $("#horseName").fadeIn("fast");
                 }
-            }, 50);
+            }, 10);
         });
         $(".fa").on("click touchend", function(e) {
             var dir = $(this).attr("data-dir");
@@ -1747,10 +1755,6 @@ var preaknessContenders = {
             timer = setTimeout(function() {
                 myScroll.goToPage(myScroll.currentPage.pageX, pos);
             }, 50);
-        });
-        myScroll.on("scrollEnd", function() {
-            $(".selected").removeClass("selected");
-            $(".navBlock--" + myScroll.currentPage.pageY).addClass("selected");
         });
     }
 };
