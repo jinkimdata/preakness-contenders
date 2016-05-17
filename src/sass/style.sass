@@ -61,7 +61,7 @@ h1,h2,h3,h4,h5,h6
 .navBlock
 	display: inline-block
 	padding: 1em .5em
-	font-family: $montserrat
+	font-family: $text-1
 	font-size: .6em
 	text-transform: uppercase
 	color: $accent-g2
@@ -128,7 +128,7 @@ h1,h2,h3,h4,h5,h6
 		font-size: 1.3em
 		line-height: .5em
 		color: $accent-g0
-		font-family: $montserrat
+		font-family: $text-1
 .startButton	
 	position: absolute
 	bottom: 0
@@ -143,7 +143,7 @@ h1,h2,h3,h4,h5,h6
 		margin: .7em 0
 		font-size: 2.5em
 		line-height: .5em
-		font-family: $montserrat
+		font-family: $text-1
 		color: $accent-c0
 		span
 			margin-left: .5em
@@ -209,7 +209,7 @@ h1,h2,h3,h4,h5,h6
 	overflow: hidden
 #scroller 
 	position: absolute
-	width: 800%
+	width: 1100%
 	height: 900%
 	-webkit-tap-highlight-color: rgba(0,0,0,0)
 	background-color: $base
@@ -238,7 +238,7 @@ ul
 .cell
 	position: relative
 	display: block
-	width: 12.5%
+	width: 100px/11px * 1%
 	height: 100px/9px * 1%
 	float: left
 	background-color: $base
@@ -310,7 +310,7 @@ h2
 	font-weight: 300
 	color: $accent-c0
 	text-transform: uppercase
-.cell__name
+.cell--name
 	position: relative
 	border-top: .2em solid $accent-c0
 	background: no-repeat center center
@@ -376,6 +376,7 @@ h3
 		font-family: $text-1
 		font-size: 1.7em
 		font-weight: 300
+		padding: 0 1em
 .textBlock
 	position: relative
 	width: 100%
@@ -390,22 +391,22 @@ h3
 		font-weight: 300
 		span
 			text-transform: uppercase
-.cell__odds
-	.contentBlock
-		.textBlock
-			p
-				span
-					font-family: $montserrat
-					text-transform: none
-.cell__notes
-	.contentBlock
-		.textBlock
-			background-color: transparent
-			p
-				padding: .5em
-				font-family: $text-0
-				font-size: 1.2em
-				background-color: transparent
+.textBlock--odds
+	p
+		span
+			font-family: $text-1
+			text-transform: none
+.textBlock--breeding
+	p
+		border-bottom: .2em solid $base
+		font-size: 1.5em
+.textBlock--notes
+	background-color: transparent
+	p
+		padding: .5em
+		font-family: $text-0
+		font-size: 1.2em
+		background-color: transparent
 .backToTop
 	position: absolute
 	width: 100%

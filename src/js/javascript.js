@@ -45,7 +45,7 @@ var preaknessContenders = {
 		var timer;
 		var xPos = 0;
 		var yPos = 0;
-		var horseNames = ['American Pharaoh', 'Dortmund', 'Mr. Z', 'Danzig Moon', 'Tale of Verve', 'Bodhisattva', 'Divining Rod','Firing Line'];
+		var horseNames = ['Nyquist','Exaggerator','Cherry Wine','Laoban','Collected','Fellowship','Gun Runner','Uncle Lino','Awesome Speed','Lani','Stradivari'];
 		myScroll.on('scroll',function(){
 			// It works by checking if a "timer" exists. If it does, nothing happens.
 			if (timer) {

@@ -3,6 +3,8 @@
 - var datalink = ""
 //- Creates variable called content -- an array of objects with each contender information
 include includes/content.jade
+//- Determines width of table by # of cells
+- var multiple = 11;
 
 doctype html
 //if lt IE 7
@@ -48,7 +50,7 @@ html(class="no-js", lang="en")
 				.navBlock.navBlock--2(data-pos="2") Jockey
 				.navBlock.navBlock--3(data-pos="3") Trainer
 				.navBlock.navBlock--4(data-pos="4") Owner
-				.navBlock.navBlock--5(data-pos="5") Breeder
+				.navBlock.navBlock--5(data-pos="5") Breeding
 				.navBlock.navBlock--6(data-pos="6") Earnings
 				.navBlock.navBlock--7(data-pos="7") Notes
 				.navBlock.navBlock--8(data-pos="8") Previous Start
@@ -69,170 +71,169 @@ html(class="no-js", lang="en")
 		.namePlate.stickable
 			span.fa.fa-angle-left(data-dir="l")
 			.cAlign
-				h2#horseName American Pharaoh
+				h2#horseName #{content[0].horse}
 				.slidePosition
-					span.fa.fa-circle.fa-circle--0.posMarker
-					span.fa.fa-circle.fa-circle--1
-					span.fa.fa-circle.fa-circle--2
-					span.fa.fa-circle.fa-circle--3
-					span.fa.fa-circle.fa-circle--4
-					span.fa.fa-circle.fa-circle--5
-					span.fa.fa-circle.fa-circle--6
-					span.fa.fa-circle.fa-circle--7
+					- for (var j=0;j<multiple;j++) {
+						- if (j == 0) {
+							span(class="fa fa-circle fa-circle--#{j} posMarker")
+						- } else {
+							span(class="fa fa-circle fa-circle--#{j}")
+						- }
+					- }
 			span.fa.fa-angle-right(data-dir="r")
 		#contenders
 			#scroller
-				//- Create 72 li elements. 
 				ul
-					- for (var i=0;i<72;i++) {
-						//- For every 8 elements, we create something different. All of the content is pulled from content.jade, which holds a JSON file. This is the first slide for each horse, featuring a near-fullscreen image.
-						- if (i<8) {
-							li(class="cell cell__name cell__name--#{i}")
-								.rank 
-								.rankText PP: #{i+1}
-								//- We recreate a "nameplate" for each horse
-								.namePlate
-									span.fa.fa-angle-left(data-dir="l")
-									.cAlign
-										h2 #{content[i%8].horse}
-										//- This jade file contains a div to create something like a slider position marker. This is also recreated over every cell. Inefficient, but necessary due to the nature of the iScroll library.
-										include includes/slidepos.jade
-									span.fa.fa-angle-right(data-dir="r")
-								.detailsPlate.arrow--down
-									p Details
-									//- The data attribute is used in the javascript to tell which direction to scroll. Data attributes are used for cleaner javascript.
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 16) {
-							li(class="cell cell__odds")
-								//- Vertical align wrapper.
-								.vAlign
-									.contentBlock
-										h3 Odds
-										.textBlock
-											p #{content[i%8].odds}
-												br
-												span #{content[i%8].oddsReturns}
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Horse
-								.arrow.arrow--down
-									p.nextSlidePreview Jockey
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 24) {
-							li(class="cell cell__jockey")
-								.vAlign
-									.contentBlock
-										h3 Jockey
-										//- The JSON contains booleans for if an image exists or not.
-										- if (content[i%8].jockeyImgBool) {
-											img(src="#{datalink}images/jockey#{i%8}.png")
-											p #{content[i%8].jockey}
-										//- If an image does not exist, a text-focused element is used.
-										//- This pattern occurs several more times below.
-										- } else {
-											.textBlock
-												p #{content[i%8].jockey}
-										- }
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u") 
-									p.nextSlidePreview Odds
-								.arrow.arrow--down
-									p.nextSlidePreview Trainer
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 32) {
-							li(class="cell cell__trainer")
-								.vAlign
-									.contentBlock
-										h3 Trainer
-										- if (content[i%8].trainerImgBool) {
-											img(src="#{datalink}images/jockey#{i%8}.png")
-											p #{content[i%8].trainer}
-										- } else {
-											.textBlock
-												p #{content[i%8].trainer}
-										- }
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Jockey
-								.arrow.arrow--down
-									p.nextSlidePreview Owner
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 40) {
-							li(class="cell cell__owner")
-								.vAlign
-									.contentBlock
-										h3 Owner
-										- if (content[i%8].ownerImgBool) {
-											img(src="#{datalink}images/jockey#{i%8}.png")
-											p #{content[i%8].owner}
-										- } else {
-											.textBlock
-												p #{content[i%8].owner}
-										- }
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Trainer
-								.arrow.arrow--down
-									p.nextSlidePreview Breeder
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 48) {
-							li(class="cell cell__breeder")
-								.vAlign
-									.contentBlock
-										h3 Breeder
-										- if (content[i%8].breederImgBool) {
-											img(src="#{datalink}images/jockey#{i%8}.png")
-											p #{content[i%8].breeder}
-										- } else {
-											.textBlock
-												p #{content[i%8].breeder}
-										- }
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Owner
-								.arrow.arrow--down
-									p.nextSlidePreview Earnings
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 56) {
-							li(class="cell cell__earnings")
-								.vAlign
-									.contentBlock
-										h3 Earnings
-										.textBlock
-											p #{content[i%8].earnings}
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Breeder
-								.arrow.arrow--down
-									p.nextSlidePreview Notes
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 64) {
-							li(class="cell cell__notes")
-								.vAlign
-									.contentBlock
-										h3 Notes
-										.textBlock
-											p #{content[i%8].notes1}
-											p #{content[i%8].notes2}
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Earnings
-								.arrow.arrow--down
-									p.nextSlidePreview Previous Start
-									span.fa.fa-angle-down(data-dir="d")
-						- } else if (i < 72) {
-							li(class="cell cell__prevStart")
-								.vAlign
-									.contentBlock
-										h3 Previous Start
-										.textBlock
-											p #{content[i%8].prevStart}
-								.arrow.arrow--up
-									span.fa.fa-angle-up(data-dir="u")
-									p.nextSlidePreview Notes
-								.backToTop 
-									p Back to top
-						- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--name cell--name--#{i}")
+							.rank 
+							.rankText PP: #{i+1}
+							//- We recreate a "nameplate" for each horse
+							.namePlate
+								span.fa.fa-angle-left(data-dir="l")
+								.cAlign
+									h2 #{content[i].horse}
+									//- This jade file contains a div to create something like a slider position marker. This is also recreated over every cell. Inefficient, but necessary due to the nature of the iScroll library.
+									include includes/slidepos.jade
+								span.fa.fa-angle-right(data-dir="r")
+							.detailsPlate.arrow--down
+								p Details
+								//- The data attribute is used in the javascript to tell which direction to scroll. Data attributes are used for cleaner javascript.
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--odds")
+							//- Vertical align wrapper.
+							.vAlign
+								.contentBlock
+									h3 Odds
+									.textBlock.textBlock--odds
+										p #{content[i].odds}
+											br
+											span #{content[i].oddsReturns}
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u")
+								p.nextSlidePreview Horse
+							.arrow.arrow--down
+								p.nextSlidePreview Jockey
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--jockey")
+							.vAlign
+								.contentBlock
+									h3 Jockey
+									//- The JSON contains booleans for if an image exists or not.
+									- if (content[i].jockeyImgBool) {
+										img(src="#{datalink}images/jockey#{i}.png")
+										p #{content[i].jockey}
+									//- If an image does not exist, a text-focused element is used.
+									//- This pattern occurs several more times below.
+									- } else {
+										.textBlock.textBlock--jockey
+											p #{content[i].jockey}
+									- }
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u") 
+								p.nextSlidePreview Odds
+							.arrow.arrow--down
+								p.nextSlidePreview Trainer
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--trainer")
+							.vAlign
+								.contentBlock
+									h3 Trainer
+									- if (content[i].trainerImgBool) {
+										img(src="#{datalink}images/jockey#{i}.png")
+										p #{content[i].trainer}
+									- } else {
+										.textBlock.textBlock--trainer
+											p #{content[i].trainer}
+									- }
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u")
+								p.nextSlidePreview Jockey
+							.arrow.arrow--down
+								p.nextSlidePreview Owner
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--owner")
+							.vAlign
+								.contentBlock
+									h3 Owner
+									- if (content[i].ownerImgBool) {
+										img(src="#{datalink}images/jockey#{i}.png")
+										p #{content[i].owner}
+									- } else {
+										.textBlock.textBlock--owner
+											p #{content[i].owner}
+									- }
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u")
+								p.nextSlidePreview Trainer
+							.arrow.arrow--down
+								p.nextSlidePreview Breeding
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--Breeding")
+							.vAlign
+								.contentBlock
+									h3 Breeding
+									.textBlock.textBlock--breeding
+										p Dam: #{content[i].dam}
+										p Sire: #{content[i].sire}
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u")
+								p.nextSlidePreview Owner
+							.arrow.arrow--down
+								p.nextSlidePreview Earnings
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--earnings")
+							.vAlign
+								.contentBlock
+									h3 Earnings
+									.textBlock.textBlock--earnings
+										p #{content[i].earnings}
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u")
+								p.nextSlidePreview Breeding
+							.arrow.arrow--down
+								p.nextSlidePreview Notes
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--notes")
+							.vAlign
+								.contentBlock
+									h3 Notes
+									.textBlock.textBlock--notes
+										p #{content[i].notes1}
+										p #{content[i].notes2}
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u")
+								p.nextSlidePreview Earnings
+							.arrow.arrow--down
+								p.nextSlidePreview Previous Start
+								span.fa.fa-angle-down(data-dir="d")
+					- }
+					- for (var i=0;i<multiple;i++) {
+						li(class="cell cell--prevStart")
+							.vAlign
+								.contentBlock
+									h3 Previous Start
+									.textBlock.textBlock--prevStart
+										p #{content[i].prevStart}
+							.arrow.arrow--up
+								span.fa.fa-angle-up(data-dir="u")
+								p.nextSlidePreview Notes
+							.backToTop 
+								p Back to top
 					- }
 		//- #leaderboard
 		//- 	include includes/ad-for-body.html		
