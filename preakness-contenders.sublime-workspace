@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"accent",
+				"accent-g0"
+			],
+			[
 				"stic",
 				"stickable"
 			],
@@ -83,7 +87,15 @@
 			"file": "src/index.jade",
 			"settings":
 			{
-				"buffer_size": 9370,
+				"buffer_size": 9084,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dist/index.html",
+			"settings":
+			{
+				"buffer_size": 74906,
 				"line_ending": "Unix"
 			}
 		},
@@ -91,7 +103,7 @@
 			"file": "src/includes/slidepos.jade",
 			"settings":
 			{
-				"buffer_size": 2358,
+				"buffer_size": 192,
 				"line_ending": "Unix"
 			}
 		},
@@ -99,7 +111,7 @@
 			"file": "src/includes/content.jade",
 			"settings":
 			{
-				"buffer_size": 4383,
+				"buffer_size": 4886,
 				"line_ending": "Unix"
 			}
 		},
@@ -123,7 +135,7 @@
 			"file": "src/js/javascript.js",
 			"settings":
 			{
-				"buffer_size": 4834,
+				"buffer_size": 4897,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,7 +151,7 @@
 			"file": "src/sass/style.sass",
 			"settings":
 			{
-				"buffer_size": 8084,
+				"buffer_size": 8115,
 				"line_ending": "Unix"
 			}
 		},
@@ -216,9 +228,6 @@
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/css",
-		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/css/fonts",
-		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/css/fonts/icons",
-		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/fonts",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/js",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/dist/js/min",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src",
@@ -228,6 +237,7 @@
 	],
 	"file_history":
 	[
+		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/src/includes/readmore.jade",
 		"/Users/jikim/Documents/bsun/online/org/2016/05/test/package.json",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/.gitignore",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/preakness-contenders/package.json",
@@ -293,6 +303,33 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"7",
+			"montserrat",
+			"lato",
+			"preakgold",
+			"darkgray",
+			"lightgray",
+			"offblack",
+			"white",
+			"__",
+			"breeder",
+			"#{j}",
+			"content[j]",
+			"j+1",
+			"--#{j}",
+			"var j=0;j<multiple;j++)",
+			"j",
+			"},\n{",
+			"},\n",
+			"#{i+1}",
+			"#{i}",
+			"#{",
+			"j<8",
+			"i%8",
+			"else if",
+			"i%8",
+			"href",
+			"li(class=\"cell cell_details\")",
 			"style",
 			".namePlateText.namePlateText--top\n								// 	h2 #{content[i%8].horse}\n								// include includes/slidepos.jade",
 			"slidepos",
@@ -393,34 +430,7 @@
 			"('../images/0lg.png')",
 			" no-repeat center center fixed",
 			"jpg",
-			"0smlg",
-			"images/",
-			"	e.preventDefault();\n				return;\n			};",
-			"if (myScroll.moved) {\n				e.preventDefault();\n				return;\n			};",
-			" (myScroll.moved) {\n			// 	e.preventDefault();\n			// 	return;\n			// };",
-			"if (myScroll.moved) {\n				e.preventDefault();\n				return;\n			};",
-			"click touchend",
-			"keybind",
-			"blue",
-			".posMarker",
-			"arrow",
-			".arrow.arrow--down",
-			".arrow.arrow--up\n									span.fa.fa-angle-up",
-			"include includes/nameplate.jade",
-			"px",
-			"--#{i%8}",
-			"png",
-			"scrollFuntions",
-			"jpg",
-			"}.png",
-			"include includes/nameplate.jade",
-			"false",
-			"true",
-			"FALSE",
-			"TRUE",
-			"when",
-			"true",
-			"imgBool"
+			"0smlg"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -447,7 +457,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -456,45 +466,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9370,
+						"buffer_size": 9084,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4636,
-								4636
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1605.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/includes/slidepos.jade",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2358,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24,
-								24
+								3308,
+								3308
 							]
 						],
 						"settings":
@@ -507,24 +487,84 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/includes/content.jade",
+					"buffer": 1,
+					"file": "dist/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4383,
+						"buffer_size": 74906,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								175,
-								175
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/includes/slidepos.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 192,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								192,
+								192
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/includes/content.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4886,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3463,
+								3463
 							]
 						],
 						"settings":
@@ -543,7 +583,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "package.json",
 					"semi_transient": false,
 					"settings":
@@ -569,11 +609,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
@@ -597,7 +637,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -607,20 +647,20 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "src/js/javascript.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4834,
+						"buffer_size": 4897,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1444,
-								1444
+								1465,
+								1465
 							]
 						],
 						"settings":
@@ -630,14 +670,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 202.0,
+						"translation.y": 928.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "src/js/iscroll-probe.js",
 					"semi_transient": false,
 					"settings":
@@ -663,24 +703,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "src/sass/style.sass",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8084,
+						"buffer_size": 8115,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7144,
-								7144
+								7050,
+								7050
 							]
 						],
 						"settings":
@@ -690,14 +730,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5382.0,
+						"translation.y": 95.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "src/sass/_variables.sass",
 					"semi_transient": false,
 					"settings":
@@ -722,11 +762,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "src/sass/_mixins.sass",
 					"semi_transient": false,
 					"settings":
@@ -752,7 +792,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -834,7 +874,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

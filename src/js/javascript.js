@@ -22,6 +22,7 @@ var preaknessContenders = {
 	},
 	// All functions relating to scrolling on the site is here.
 	scrollFunctions: function() {
+		var cellsWide = 10;
 		// Except this one. This one gets rid of the splash page.
 		$('.startButton').on('click touchend', function() {
 			$('.splash').fadeOut();
@@ -45,7 +46,19 @@ var preaknessContenders = {
 		var timer;
 		var xPos = 0;
 		var yPos = 0;
-		var horseNames = ['Nyquist','Exaggerator','Cherry Wine','Laoban','Collected','Fellowship','Gun Runner','Uncle Lino','Awesome Speed','Lani','Stradivari'];
+		var horseNames = [
+			'Nyquist',
+			'Exaggerator',
+			'Cherry Wine',
+			'Laoban',
+			'Collected',
+			'Fellowship',
+			'Abiding Star',
+			'Uncle Lino',
+			'Awesome Speed',
+			'Lani',
+			'Stradivari'
+		];
 		myScroll.on('scroll',function(){
 			// It works by checking if a "timer" exists. If it does, nothing happens.
 			if (timer) {
@@ -57,6 +70,11 @@ var preaknessContenders = {
 				newXPos = myScroll.currentPage.pageX;
 				if (yPos != newYPos) {				
 					yPos = newYPos;
+					if (yPos == 8) {
+						$('.links').fadeIn('slow');
+					} else {
+						$('.links').fadeOut('fast');
+					};
 					if (yPos != 0) {
 						$('.stickable').fadeIn('slow');
 					} else {
@@ -96,13 +114,13 @@ var preaknessContenders = {
 						if (myScroll.currentPage.pageX > 0) {
 							myScroll.prev();
 						} else if (myScroll.currentPage.pageX == 0) {
-							myScroll.goToPage(7, myScroll.currentPage.pageY);
+							myScroll.goToPage(cellsWide, myScroll.currentPage.pageY);
 						};
 						break;
 					case "r":
-						if (myScroll.currentPage.pageX < 7) {
+						if (myScroll.currentPage.pageX < cellsWide) {
 							myScroll.next();
-						} else if (myScroll.currentPage.pageX == 7) {
+						} else if (myScroll.currentPage.pageX == cellsWide) {
 							myScroll.goToPage(0, myScroll.currentPage.pageY);
 						};
 						break;

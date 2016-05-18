@@ -1,4 +1,3 @@
-//- include 
 - var datalink = "http://data.baltimoresun.com/jin/preakness-contenders/"
 - var datalink = ""
 //- Creates variable called content -- an array of objects with each contender information
@@ -125,7 +124,7 @@ html(class="no-js", lang="en")
 									h3 Jockey
 									//- The JSON contains booleans for if an image exists or not.
 									- if (content[i].jockeyImgBool) {
-										img(src="#{datalink}images/jockey#{i}.png")
+										img(src="#{datalink}images/jockey#{content[i].file}.png")
 										p #{content[i].jockey}
 									//- If an image does not exist, a text-focused element is used.
 									//- This pattern occurs several more times below.
@@ -146,7 +145,7 @@ html(class="no-js", lang="en")
 								.contentBlock
 									h3 Trainer
 									- if (content[i].trainerImgBool) {
-										img(src="#{datalink}images/jockey#{i}.png")
+										img(src="#{datalink}images/trainer#{content[i].file}.png")
 										p #{content[i].trainer}
 									- } else {
 										.textBlock.textBlock--trainer
@@ -165,7 +164,7 @@ html(class="no-js", lang="en")
 								.contentBlock
 									h3 Owner
 									- if (content[i].ownerImgBool) {
-										img(src="#{datalink}images/jockey#{i}.png")
+										img(src="#{datalink}images/owner#{content[i].file}.png")
 										p #{content[i].owner}
 									- } else {
 										.textBlock.textBlock--owner
@@ -185,6 +184,7 @@ html(class="no-js", lang="en")
 									h3 Breeding
 									.textBlock.textBlock--breeding
 										p Dam: #{content[i].dam}
+										.divider
 										p Sire: #{content[i].sire}
 							.arrow.arrow--up
 								span.fa.fa-angle-up(data-dir="u")
@@ -235,6 +235,12 @@ html(class="no-js", lang="en")
 							.backToTop 
 								p Back to top
 					- }
+		.links.linksSticky
+			a(href="#") Links
+			a(href="#") Links
+			a(href="#") Links
+			a(href="#") Links
+			a(href="#") Links
 		//- #leaderboard
 		//- 	include includes/ad-for-body.html		
 		//CSS
