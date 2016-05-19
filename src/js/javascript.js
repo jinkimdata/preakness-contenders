@@ -6,16 +6,16 @@ var preaknessContenders = {
 	// Share tool functions.
 	share: function(){
 		$(".icon-twitter").on("click", function(){
-			var tweet = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders"; //Tweet text
-			var url = "http://data.baltimoresun.com/jin/preakness-contenders/"; //Interactive URL
+			var tweet = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders."; //Tweet text
+			var url = "http://data.baltimoresun.com/sports/preakness-2016/"; //Interactive URL
 			var twitter_url = "https://twitter.com/intent/tweet?text="+tweet+"&url="+url+"&tw_p=tweetbutton";
 			window.open(twitter_url, 'mywin','left=200,top=200,width=500,height=300,toolbar=1,resizable=0'); return false;
 		});
 		$(".icon-facebook").on("click", function(){
-			var picture = ""; //Picture URL
+			var picture = "http://data.baltimoresun.com/sports/preakness-2016/images/thumb.jpg"; //Picture URL
 			var title = "Preakness 2016 Contenders"; //Post title
-			var description = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders"; //Post description
-			var url = "http://data.baltimoresun.com/jin/preakness-contenders/images/thumb.jpg"; //Interactive URL
+			var description = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders."; //Post description
+			var url = "http://data.baltimoresun.com/sports/preakness-2016/"; //Interactive URL
 	    	var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link="+url+"&picture="+picture+"&name="+title+"&description="+description+"&redirect_uri=http://www.facebook.com";    		
 			window.open(facebook_url, 'mywin','left=200,top=200,width=500,height=300,toolbar=1,resizable=0'); return false;
 		});
@@ -47,16 +47,16 @@ var preaknessContenders = {
 		var xPos = 0;
 		var yPos = 0;
 		var horseNames = [
-			'Nyquist',
-			'Exaggerator',
 			'Cherry Wine',
-			'Laoban',
-			'Collected',
-			'Fellowship',
-			'Abiding Star',
 			'Uncle Lino',
+			'Nyquist',
 			'Awesome Speed',
+			'Exaggerator',
 			'Lani',
+			'Collected',
+			'Laoban',
+			'Abiding Star',
+			'Fellowship',
 			'Stradivari'
 		];
 		myScroll.on('scroll',function(){

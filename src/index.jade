@@ -1,4 +1,4 @@
-- var datalink = "http://data.baltimoresun.com/jin/preakness-contenders/"
+- var datalink = "http://data.baltimoresun.com/sports/preakness-2016/"
 - var datalink = ""
 //- Creates variable called content -- an array of objects with each contender information
 include includes/content.jade
@@ -26,14 +26,14 @@ html(class="no-js", lang="en")
 		meta(property="og:url", content="#{datalink}")
 		meta(property="og:image", content="#{datalink}images/thumb.jpg")
 		meta(property="og:site_name", content="The Baltimore Sun")
-		meta(property="og:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders")
+		meta(property="og:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders.")
 		meta(property="fb:app_id", content="310302989040998")
 		//Twitter Stuff
 		meta(name="twitter:card", content="summary")
 		meta(name="twitter:site", content="@baltimoresun")
 		meta(name="twitter:creator", content="@baltsundata")
 		meta(name="twitter:title", content="Preakness 2016 Contenders")
-		meta(name="twitter:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders")
+		meta(name="twitter:description", content="Prep for this year's Preakness Stakes with this handy breakdown of the contenders.")
 		meta(name="twitter:image", content="#{datalink}images/thumb.jpg")
 		meta(name="twitter:domain", content="baltimoresun.com")
 	body
@@ -122,16 +122,8 @@ html(class="no-js", lang="en")
 							.vAlign
 								.contentBlock
 									h3 Jockey
-									//- The JSON contains booleans for if an image exists or not.
-									- if (content[i].jockeyImgBool) {
-										img(src="#{datalink}images/jockey#{content[i].file}.png")
-										p #{content[i].jockey}
-									//- If an image does not exist, a text-focused element is used.
-									//- This pattern occurs several more times below.
-									- } else {
-										.textBlock.textBlock--jockey
-											p #{content[i].jockey}
-									- }
+									img(src="#{datalink}images/jockey#{content[i].file}.png")
+									p #{content[i].jockey}
 							.arrow.arrow--up
 								span.fa.fa-angle-up(data-dir="u") 
 								p.nextSlidePreview Odds
@@ -236,11 +228,9 @@ html(class="no-js", lang="en")
 								p Back to top
 					- }
 		.links.linksSticky
-			a(href="#") Links
-			a(href="#") Links
-			a(href="#") Links
-			a(href="#") Links
-			a(href="#") Links
+			a(href="http://www.baltimoresun.com/sports/horse-racing/preakness/") SUN COVERAGE
+			a(href="http://www.baltimoresun.com/sports/horse-racing/preakness-pictures/") PHOTOS
+			a(href="http://www.baltimoresun.com/entertainment/music/midnight-sun-blog/bs-ae-preakness-music-20160518-story.html") INFIELDFEST
 		//- #leaderboard
 		//- 	include includes/ad-for-body.html		
 		//CSS

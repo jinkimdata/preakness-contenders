@@ -1635,17 +1635,17 @@ var preaknessContenders = {
     },
     share: function() {
         $(".icon-twitter").on("click", function() {
-            var tweet = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders";
-            var url = "http://data.baltimoresun.com/jin/preakness-contenders/";
+            var tweet = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders.";
+            var url = "http://data.baltimoresun.com/sports/preakness-2016/";
             var twitter_url = "https://twitter.com/intent/tweet?text=" + tweet + "&url=" + url + "&tw_p=tweetbutton";
             window.open(twitter_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
         });
         $(".icon-facebook").on("click", function() {
-            var picture = "";
+            var picture = "http://data.baltimoresun.com/sports/preakness-2016/images/thumb.jpg";
             var title = "Preakness 2016 Contenders";
-            var description = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders";
-            var url = "http://data.baltimoresun.com/jin/preakness-contenders/images/thumb.jpg";
+            var description = "Prep for this year's Preakness Stakes with this handy breakdown of the contenders.";
+            var url = "http://data.baltimoresun.com/sports/preakness-2016/";
             var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link=" + url + "&picture=" + picture + "&name=" + title + "&description=" + description + "&redirect_uri=http://www.facebook.com";
             window.open(facebook_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
@@ -1673,7 +1673,7 @@ var preaknessContenders = {
         var timer;
         var xPos = 0;
         var yPos = 0;
-        var horseNames = [ "Nyquist", "Exaggerator", "Cherry Wine", "Laoban", "Collected", "Fellowship", "Abiding Star", "Uncle Lino", "Awesome Speed", "Lani", "Stradivari" ];
+        var horseNames = [ "Cherry Wine", "Uncle Lino", "Nyquist", "Awesome Speed", "Exaggerator", "Lani", "Collected", "Laoban", "Abiding Star", "Fellowship", "Stradivari" ];
         myScroll.on("scroll", function() {
             if (timer) {
                 clearTimeout(timer);
