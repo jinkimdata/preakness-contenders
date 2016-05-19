@@ -1665,11 +1665,9 @@ var preaknessContenders = {
             mouseWheel: false,
             disableMouse: true,
             probeType: 3,
-            bounce: false
+            bounce: false,
+            click: true
         });
-        document.addEventListener("touchend", function(e) {
-            e.preventDefault();
-        }, false);
         var timer;
         var xPos = 0;
         var yPos = 0;

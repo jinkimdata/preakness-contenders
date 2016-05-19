@@ -37,11 +37,12 @@ var preaknessContenders = {
 			mouseWheel: false,
 			disableMouse: true,
 			probeType: 3,
-			bounce: false
+			bounce: false,
+			click: true
 		});
-		document.addEventListener('touchend', function (e) { 
-			e.preventDefault(); 
-		}, false);
+		// document.addEventListener('touchend', function (e) { 
+		// 	e.preventDefault(); 
+		// }, false);
 		// The timer puts on a cap on the number of times functions trigger. It is used repeatedly through this code.
 		var timer;
 		var xPos = 0;
