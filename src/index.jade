@@ -68,7 +68,7 @@ html(class="no-js", lang="en")
 			.borderTrick
 		//- This overlay contains the left and right arrows and the horse name. It will be present on every page except the "card" pages.
 		.namePlate.stickable
-			span.fa.fa-angle-left(data-dir="l")
+			span.fa.fa-angle-left.fade(data-dir="l")
 			.cAlign
 				h2#horseName #{content[0].horse}
 				.slidePosition
@@ -89,7 +89,11 @@ html(class="no-js", lang="en")
 							.rankText PP: #{i+1}
 							//- We recreate a "nameplate" for each horse
 							.namePlate
-								span.fa.fa-angle-left(data-dir="l")
+								- if (i == 0) {
+									span.fa.fa-angle-left.fade(data-dir="l")
+								- } else {
+									span.fa.fa-angle-left(data-dir="l")
+								- }
 								.cAlign
 									h2 #{content[i].horse}
 									//- This jade file contains a div to create something like a slider position marker. This is also recreated over every cell. Inefficient, but necessary due to the nature of the iScroll library.
@@ -170,7 +174,7 @@ html(class="no-js", lang="en")
 								span.fa.fa-angle-down(data-dir="d")
 					- }
 					- for (var i=0;i<multiple;i++) {
-						li(class="cell cell--Breeding")
+						li(class="cell cell--breeding")
 							.vAlign
 								.contentBlock
 									h3 Breeding
@@ -229,6 +233,8 @@ html(class="no-js", lang="en")
 					- }
 		.links.linksSticky
 			a(href="http://www.baltimoresun.com/sports/horse-racing/preakness/") SUN COVERAGE
+			a(href="http://www.baltimoresun.com/sports/horse-racing/preakness/bal-preakness-2016-infield-map-preakness-guide-20160511-htmlstory.html") MAP
+			a(href="http://www.baltimoresun.com/sports/horse-racing/preakness/bal-preakness-picks-20160506-htmlstory.html") BETTING GUIDE
 			a(href="http://www.baltimoresun.com/sports/horse-racing/preakness-pictures/") PHOTOS
 			a(href="http://www.baltimoresun.com/entertainment/music/midnight-sun-blog/bs-ae-preakness-music-20160518-story.html") INFIELDFEST
 		//- #leaderboard

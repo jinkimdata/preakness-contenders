@@ -1666,7 +1666,7 @@ var preaknessContenders = {
             disableMouse: true,
             probeType: 3,
             bounce: false,
-            click: true
+            keyBindings: true
         });
         var timer;
         var xPos = 0;
@@ -1702,6 +1702,16 @@ var preaknessContenders = {
                         $("#horseName").text(horseNames[xPos]);
                         $("#horseName").fadeIn("fast");
                     });
+                }
+                if (xPos == 0) {
+                    $(".fa-angle-left").addClass("fade");
+                } else {
+                    $(".fa-angle-left").removeClass("fade");
+                }
+                if (xPos == cellsWide) {
+                    $(".fa-angle-right").addClass("fade");
+                } else {
+                    $(".fa-angle-right").removeClass("fade");
                 }
             }, 10);
         });
